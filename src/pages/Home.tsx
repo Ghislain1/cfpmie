@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
@@ -7,7 +7,11 @@ import Badge from '@/components/ui/Badge'
 import CTAButton from '@/components/common/CTAButton'
 import FormationCard from '@/components/common/FormationCard'
 import SectionHeading from '@/components/common/SectionHeading'
+import ParallaxSection from '@/components/common/ParallaxSection'
+import Particles from '@/components/common/Particles'
+import ScrollSpyNav from '@/components/common/ScrollSpyNav'
 import SEO from '@/components/common/SEO'
+import { useScrollSpy, getSectionColor } from '@/hooks/useScrollSpy'
 import { formations } from '@/features/formations/formationData'
 
 const highlights = [
@@ -32,7 +36,7 @@ const itemVariants = {
 function HeroSection() {
   const { t } = useTranslation()
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black">
+    <section id="hero" className="relative min-h-screen overflow-hidden bg-black">
       <video
         autoPlay
         muted
@@ -72,7 +76,7 @@ function HeroSection() {
 function HighlightsSection() {
   const { t } = useTranslation()
   return (
-    <section className="bg-white py-16 sm:py-20 dark:bg-gray-950">
+    <section id="highlights" className="bg-white py-16 sm:py-20 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading badge={t('home.highlights.badge')} title={t('home.highlights.title')} />
         <motion.div
@@ -107,7 +111,7 @@ function HighlightsSection() {
 function GallerySection() {
   const { t } = useTranslation()
   return (
-    <section className="bg-primary-800 py-16 sm:py-20 dark:bg-gray-900">
+    <section id="gallery" className="bg-primary-800 py-16 sm:py-20 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <Badge variant="orange">{t('home.gallery.badge')}</Badge>
@@ -151,7 +155,7 @@ function GallerySection() {
 function CTASection() {
   const { t } = useTranslation()
   return (
-    <section className="bg-accent-500 py-12">
+    <section id="cta" className="bg-accent-500 py-12">
       <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
         <h2 className="font-heading text-3xl font-extrabold text-white sm:text-4xl">
           {t('home.cta.heading')}
@@ -176,19 +180,43 @@ function CTASection() {
   )
 }
 
+const sectionIds = ['hero', 'formations', 'highlights', 'gallery', 'cta']
+
 export default function Home() {
   const { t } = useTranslation()
+  const activeId = useScrollSpy(sectionIds)
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--scrollbar-color', getSectionColor(activeId))
+  }, [activeId])
 
   const meta = useMemo(() => ({
     title: t('home.seoTitle'),
     description: t('home.seoDescription'),
   }), [t])
 
+  const sectionLabels = useMemo(() => [
+    { id: 'hero', label: t('home.hero.badge') },
+    { id: 'formations', label: t('home.formations.badge') },
+    { id: 'highlights', label: t('home.highlights.badge') },
+    { id: 'gallery', label: t('home.gallery.badge') },
+    { id: 'cta', label: t('home.cta.heading') },
+  ], [t])
+
   return (
     <>
       <SEO {...meta} />
+      <Particles
+        quantity={40}
+        color="rgba(255, 255, 255, 0.25)"
+        minSize={1}
+        maxSize={4}
+        speed={0.2}
+        className="fixed inset-0 pointer-events-none z-0"
+      />
+      <ScrollSpyNav sections={sectionLabels} activeId={activeId} />
       <HeroSection />
-      <section className="bg-primary-50 py-16 sm:py-20 dark:bg-gray-900">
+      <ParallaxSection id="formations" className="bg-primary-50 py-16 sm:py-20 dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge={t('home.formations.badge')}
@@ -209,10 +237,10 @@ export default function Home() {
             ))}
           </motion.div>
         </div>
-      </section>
-      <HighlightsSection />
-      <GallerySection />
-      <CTASection />
+      </ParallaxSection>
+      <ParallaxSection><HighlightsSection /></ParallaxSection>
+      <ParallaxSection><GallerySection /></ParallaxSection>
+      <ParallaxSection><CTASection /></ParallaxSection>
     </>
   )
 }

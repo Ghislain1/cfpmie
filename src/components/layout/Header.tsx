@@ -68,6 +68,7 @@ export default function Header() {
   }, [open])
 
   return (
+    <>
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md dark:bg-gray-900/95">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label={t('header.ariaLabel')}>
         <Link to="/" className="flex items-center gap-3" onClick={close} aria-label={t('header.homeAriaLabel')}>
@@ -80,6 +81,38 @@ export default function Header() {
             </span>
           </div>
         </Link>
+
+        <div className="hidden items-center gap-1 lg:flex">
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === '/'}
+              onClick={close}
+              className={({ isActive }) =>
+                cn(
+                  'rounded-lg px-3 py-2 text-sm font-medium transition',
+                  isActive
+                    ? 'bg-primary-800 text-white dark:bg-primary-700'
+                    : 'text-gray-700 hover:bg-primary-50 hover:text-primary-800 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-300',
+                )
+              }
+            >
+              {({ isActive }: { isActive: boolean }) => (
+                <span aria-current={isActive ? 'page' : undefined}>{link.label}</span>
+              )}
+            </NavLink>
+          ))}
+          <a
+            href="https://wa.me/237670109235"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2 inline-flex items-center gap-2 rounded-full bg-accent-500 px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-600"
+          >
+            <Phone size={14} aria-hidden="true" />
+            {t('header.whatsapp')}
+          </a>
+        </div>
 
         <div className="flex items-center gap-2">
           <button
@@ -113,50 +146,52 @@ export default function Header() {
           </button>
         </div>
 
-        <div
-          ref={menuRef}
-          id="mobile-menu"
-          role="dialog"
-          aria-modal={open}
-          aria-label={t('header.ariaLabel')}
-          className={cn(
-            'lg:flex lg:items-center lg:gap-0',
-            open
-              ? 'fixed inset-0 top-16 z-50 flex flex-col gap-1 overflow-y-auto bg-white p-6 pt-4 dark:bg-gray-900'
-              : 'hidden',
-          )}
-        >
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              onClick={close}
-              className={({ isActive }) =>
-                cn(
-                  'rounded-lg px-3 py-2 text-sm font-medium transition lg:px-4',
-                  isActive
-                    ? 'bg-primary-800 text-white dark:bg-primary-700'
-                    : 'text-gray-700 hover:bg-primary-50 hover:text-primary-800 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-300',
-                )
-              }
-            >
-              {({ isActive }: { isActive: boolean }) => (
-                <span aria-current={isActive ? 'page' : undefined}>{link.label}</span>
-              )}
-            </NavLink>
-          ))}
-          <a
-            href="https://wa.me/237670109235"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-600 lg:ml-4 lg:mt-0"
-          >
-            <Phone size={16} aria-hidden="true" />
-            {t('header.whatsapp')}
-          </a>
-        </div>
       </nav>
     </header>
+
+    <div
+      ref={menuRef}
+      id="mobile-menu"
+      role="dialog"
+      aria-modal={open}
+      aria-label={t('header.ariaLabel')}
+      className={cn(
+        'lg:hidden',
+        open
+          ? 'fixed inset-0 top-16 z-[100] flex flex-col gap-1 overflow-y-auto bg-white p-6 pt-4 dark:bg-gray-900'
+          : 'hidden',
+      )}
+    >
+      {navLinks.map((link) => (
+        <NavLink
+          key={link.to}
+          to={link.to}
+          end={link.to === '/'}
+          onClick={close}
+          className={({ isActive }) =>
+            cn(
+              'rounded-lg px-3 py-2 text-sm font-medium transition',
+              isActive
+                ? 'bg-primary-800 text-white dark:bg-primary-700'
+                : 'text-gray-700 hover:bg-primary-50 hover:text-primary-800 dark:text-gray-200 dark:hover:bg-gray-800 dark:hover:text-primary-300',
+            )
+          }
+        >
+          {({ isActive }: { isActive: boolean }) => (
+            <span aria-current={isActive ? 'page' : undefined}>{link.label}</span>
+          )}
+        </NavLink>
+      ))}
+      <a
+        href="https://wa.me/237670109235"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-600"
+      >
+        <Phone size={16} aria-hidden="true" />
+        {t('header.whatsapp')}
+      </a>
+    </div>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { GraduationCap, Users, Briefcase, Award, Image as ImageIcon } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import SectionHeading from '@/components/common/SectionHeading'
+import ParallaxSection from '@/components/common/ParallaxSection'
 import SEO from '@/components/common/SEO'
 
 const values = [
@@ -56,7 +57,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-white py-16 dark:bg-gray-950">
+      <ParallaxSection className="bg-white py-16 dark:bg-gray-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-heading text-3xl font-extrabold text-primary-900 dark:text-primary-100">{t('about.philosophy.title')}</h2>
@@ -71,9 +72,9 @@ export default function About() {
             </p>
           </div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      <section className="bg-primary-50 py-16 dark:bg-gray-900">
+      <ParallaxSection className="bg-primary-50 py-16 dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading badge={t('about.values.badge')} title={t('about.values.title')} />
           <motion.div
@@ -101,9 +102,9 @@ export default function About() {
             })}
           </motion.div>
         </div>
-      </section>
+      </ParallaxSection>
 
-      <section className="bg-white py-16 dark:bg-gray-950">
+      <ParallaxSection className="bg-white py-16 dark:bg-gray-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading badge={t('about.facilities.badge')} title={t('about.facilities.title')} />
           <motion.div
@@ -133,7 +134,7 @@ export default function About() {
             {t('about.facilities.caption')}
           </p>
         </div>
-      </section>
+      </ParallaxSection>
     </>
   )
 }
