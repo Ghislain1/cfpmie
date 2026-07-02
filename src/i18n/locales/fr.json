@@ -1,0 +1,283 @@
+{
+  "header": {
+    "logoSubtitle": "Sous tutelle du MINEFOP",
+    "nav": {
+      "home": "Accueil",
+      "constructionMetallique": "Construction Métallique",
+      "gestionManagement": "Gestion & Management",
+      "electricite": "Électricité",
+      "about": "À propos",
+      "contact": "Contact"
+    },
+    "theme": {
+      "light": "Activer le mode clair",
+      "dark": "Activer le mode sombre"
+    },
+    "menu": {
+      "open": "Ouvrir le menu",
+      "close": "Fermer le menu"
+    },
+    "whatsapp": "WhatsApp",
+    "ariaLabel": "Navigation principale",
+    "homeAriaLabel": "Accueil CFPMIE"
+  },
+  "footer": {
+    "description": "Centre de Formation Professionnelle<br />Multi-Industriel de l'Excellence",
+    "motto": "«Une Formation – Un Métier – Un Emploi»",
+    "formations": "Nos formations",
+    "contact": "Contact",
+    "usefulLinks": "Liens utiles",
+    "constructionMetallique": "Construction Métallique",
+    "gestionManagement": "Gestion des Finances & Management",
+    "electricite": "Électricité",
+    "address": "Chefferie Makepe Missoké, Douala",
+    "about": "À propos",
+    "whatsapp": "WhatsApp",
+    "copyright": "© {{year}} CFPMIE – Tous droits réservés.",
+    "minefop": "Sous la tutelle du <1>MINEFOP</1> – Ministère de l'Emploi et de la Formation Professionnelle, Cameroun"
+  },
+  "layout": {
+    "loading": "Chargement en cours…",
+    "loadingLabel": "Chargement"
+  },
+  "skipToContent": "Aller au contenu principal",
+  "errorBoundary": {
+    "title": "Une erreur est survenue",
+    "message": "Veuillez rafraîchir la page ou réessayer plus tard.",
+    "button": "Rafraîchir la page"
+  },
+  "home": {
+    "seoTitle": "Accueil",
+    "seoDescription": "CFPMIE – formations professionnelles en construction métallique, gestion des finances et électricité à Douala, Cameroun.",
+    "hero": {
+      "badge": "Rentrée académique 2025",
+      "heading": "Une <1>Formation</1> –<br /><2>Un Métier – Un Emploi</2>",
+      "description": "Le CFPMIE forme les professionnels de demain dans les métiers industriels et de gestion.",
+      "ctaInscription": "Inscriptions ouvertes",
+      "ctaDecouvrir": "Découvrir le CFPMIE",
+      "quote": "«Après la période électorale, la vie continue… et l'avenir se prépare.»",
+      "quoteCite": "— Rentrée académique 2025 : 25 novembre 2025"
+    },
+    "highlights": {
+      "badge": "Pourquoi CFPMIE ?",
+      "title": "Notre promesse",
+      "items": {
+        "practice": { "title": "Formation pratique", "text": "80% de pratique en atelier. Nos apprenants fabriquent eux-mêmes le mobilier scolaire." },
+        "diplomas": { "title": "Diplômes reconnus", "text": "AQP/CQP/DQP sous tutelle MINEFOP, plus certificat de secourisme inclus." },
+        "internship": { "title": "Stage garanti", "text": "2 mois de stage en entreprise partenaire pour chaque apprenant." },
+        "expertise": { "title": "Encadrement expert", "text": "Formateurs qualifiés et équipements modernes." }
+      }
+    },
+    "formations": {
+      "badge": "Nos filières",
+      "title": "Choisissez votre formation",
+      "description": "Trois secteurs porteurs pour bâtir votre avenir professionnel."
+    },
+    "gallery": {
+      "badge": "Réalisations",
+      "heading": "«Au CFPMIE, nos apprenants ne regardent pas… ils réalisent !»",
+      "description": "Dès le premier jour, nos apprenants mettent la main à la pâte.",
+      "atelier": "Atelier {{number}}",
+      "caption": "[Photos d'illustration – ateliers et réalisations des apprenants]"
+    },
+    "cta": {
+      "heading": "Prêt à construire votre avenir ?",
+      "text": "Rejoignez le CFPMIE et bénéficiez d'une formation professionnelle de qualité.",
+      "button": "S'inscrire maintenant",
+      "whatsapp": "Écrire sur WhatsApp"
+    }
+  },
+  "about": {
+    "seoTitle": "À propos",
+    "seoDescription": "Découvrez le CFPMIE, centre de formation professionnelle à Douala sous tutelle MINEFOP.",
+    "hero": {
+      "badge": "À propos",
+      "title": "Le CFPMIE en bref",
+      "subtitle": "Centre de Formation Professionnelle Multi-Industriel de l'Excellence."
+    },
+    "philosophy": {
+      "title": "Notre philosophie",
+      "quote": "«Au CFPMIE, nos apprenants ne regardent pas… ils réalisent !»",
+      "p1": "Nous croyons en une formation par la pratique. Dès le premier jour, nos apprenants sont en atelier, en train de souder, câbler, assembler et créer.",
+      "p2": "Sous la tutelle du <1>MINEFOP</1>, le CFPMIE s'engage à offrir une formation de qualité, accessible et adaptée au marché camerounais."
+    },
+    "values": {
+      "badge": "Nos valeurs",
+      "title": "Ce qui nous distingue",
+      "items": {
+        "practice": { "title": "Pratique avant tout", "text": "80% de pratique en atelier. Nos apprenants fabriquent le mobilier scolaire dès le premier mois." },
+        "mentoring": { "title": "Encadrement professionnel", "text": "Des formateurs qualifiés issus du monde professionnel accompagnent chaque apprenant." },
+        "employment": { "title": "Insertion professionnelle", "text": "Stage garanti en entreprise et accompagnement vers l'emploi pour chaque diplômé." },
+        "diplomas": { "title": "Diplômes d'État", "text": "Formations reconnues par le MINEFOP avec diplômes AQP, CQP et DQP." }
+      }
+    },
+    "facilities": {
+      "badge": "Nos installations",
+      "title": "Des équipements modernes",
+      "items": {
+        "welding": { "title": "Atelier soudure", "desc": "Postes à souder MIG/MAG, TIG, MMA, équipements de chaudronnerie" },
+        "electrical": { "title": "Laboratoire d'électricité", "desc": "Tableaux didactiques, armoires industrielles, outils de diagnostic" },
+        "office": { "title": "Salle de bureautique", "desc": "Ordinateurs, logiciels de comptabilité et de gestion" },
+        "workshop": { "title": "Atelier de fabrication", "desc": "Fabrication du mobilier scolaire par les apprenants" },
+        "classrooms": { "title": "Salles de cours", "desc": "Espaces climatisés et équipés pour l'apprentissage théorique" },
+        "lounge": { "title": "Espace détente", "desc": "Cadre agréable pour les pauses et les échanges" }
+      },
+      "caption": "[Photos d'illustration – ateliers et équipements du CFPMIE]"
+    }
+  },
+  "contact": {
+    "seoTitle": "Contact & Inscription",
+    "seoDescription": "Contactez le CFPMIE à Douala pour vous inscrire à nos formations professionnelles.",
+    "hero": {
+      "badge": "Inscriptions ouvertes",
+      "title": "Contact & Inscription",
+      "description": "Prêt à rejoindre le CFPMIE ? Remplissez le formulaire ou contactez-nous directement."
+    },
+    "form": {
+      "title": "Formulaire d'inscription",
+      "description": "Remplissez ce formulaire et nous vous recontacterons via WhatsApp.",
+      "successTitle": "Message envoyé !",
+      "successText": "Vous allez être redirigé vers WhatsApp pour confirmer.",
+      "nameLabel": "Nom complet",
+      "namePlaceholder": "Votre nom et prénom",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "+237 6XX XXX XXX",
+      "formationLabel": "Formation souhaitée",
+      "formationPlaceholder": "Sélectionnez une formation",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Votre message (optionnel)",
+      "errors": {
+        "name": "Le nom doit contenir au moins 2 caractères",
+        "phone": "Numéro de téléphone invalide",
+        "formation": "Veuillez sélectionner une formation"
+      },
+      "submit": "Envoyer via WhatsApp",
+      "sending": "Envoi en cours…",
+      "redirectNote": "Vous serez redirigé vers WhatsApp pour confirmer votre message.",
+      "required": "*"
+    },
+    "info": {
+      "title": "Nos coordonnées",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "whatsapp": "WhatsApp",
+      "email": "E-mail",
+      "website": "Site web",
+      "addressValue": "Chefferie Makepe Missoké, Douala, Cameroun",
+      "phoneValue": "+237 659 245 821 / +237 674 234 872",
+      "whatsappValue": "+237 670 109 235",
+      "emailValue": "contact@cfpmie.com",
+      "websiteValue": "www.formationcfpmie.com"
+    },
+    "social": {
+      "title": "Suivez-nous"
+    },
+    "map": {
+      "title": "Nous trouver",
+      "iframeTitle": "Localisation CFPMIE Douala",
+      "location": "Chefferie Makepe Missoké, Douala"
+    },
+    "whatsappMessage": "Bonjour CFPMIE ! Je souhaite m'inscrire.%0A%0ANom : {{nom}}%0ATéléphone : {{telephone}}%0AFormation : {{formation}}%0AMessage : {{message}}"
+  },
+  "notFound": {
+    "seoTitle": "Page non trouvée",
+    "title": "Page non trouvée",
+    "message": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "button": "Retour à l'accueil"
+  },
+  "formationCard": {
+    "cta": "En savoir plus"
+  },
+  "formationDetail": {
+    "badge": "Inscriptions ouvertes",
+    "heroSpecial": "Spéciale",
+    "heroFormation": "FORMATION en",
+    "ctaInscrire": "S'inscrire",
+    "whatsapp": "WhatsApp",
+    "sections": {
+      "phase": "Phase de formation",
+      "filieres": "Nos filières",
+      "diplomes": "Diplômes",
+      "competences": "Compétences / Savoir-faire",
+      "participation": "Participation"
+    },
+    "phase": {
+      "theoretical": { "months": "6 mois", "desc": "Cours théoriques et pratiques" },
+      "project": { "months": "2 mois", "desc": "Projet pratique" },
+      "internship": { "months": "2 mois", "desc": "Stage garanti en entreprise" }
+    },
+    "diplomes": {
+      "diplomaText": "Diplômes professionnels reconnus par le <1>MINEFOP</1>, avec certificat de secourisme inclus.",
+      "certificates": "Certificats optionnels"
+    },
+    "participation": {
+      "feeLabel": "Frais de formation",
+      "paymentLabel": "Paiement en {{count}} mensualité",
+      "paymentLabel_plural": "Paiement en {{count}} mensualités",
+      "included": "Inclus dans l'inscription"
+    },
+    "cta": {
+      "heading": "Prêt à rejoindre la formation ?",
+      "text": "Inscrivez-vous dès maintenant.",
+      "button": "S'inscrire maintenant"
+    }
+  },
+  "formations": {
+    "construction-metallique": {
+      "title": "Construction Métallique",
+      "subtitle": "Spéciale FORMATION en Construction Métallique",
+      "description": "Maîtrisez la soudure industrielle, la chaudronnerie et la tuyauterie industrielle avec un stage garanti en entreprise.",
+      "filieres": ["Soudure industrielle et montage", "Chaudronnerie et tuyauterie industrielle"],
+      "skills": [
+        "Lire et interpréter des plans techniques",
+        "Maîtriser les procédés de soudage (MMA, MIG, TIG)",
+        "Fabriquer et assembler des structures métalliques",
+        "Installer et maintenir des réseaux de tuyauterie",
+        "Respecter les normes de sécurité et de métallurgie",
+        "Superviser des chantiers de montage industriel"
+      ],
+      "certificates": ["Travaux en hauteur", "Monteur et vérificateur d'échafaudages", "Secourisme (inclus)"],
+      "extras": ["Kit de protection (PSA)", "Polo CFPMIE", "Casquette", "Manuels de cours"],
+      "installments": ["À l'inscription", "1re mensualité", "2e mensualité"]
+    },
+    "gestion-finances-management": {
+      "title": "Gestion des Finances & Management",
+      "subtitle": "Spéciale FORMATION en Gestion des Finances & Management",
+      "description": "Devenez un professionnel polyvalent en comptabilité, secrétariat et management.",
+      "filieres": ["Sécrétariat bureautique", "Sécrétariat de direction", "Comptabilité de gestion", "Management"],
+      "skills": [
+        "Assurer la gestion comptable et financière",
+        "Maîtriser les logiciels de bureautique et comptabilité",
+        "Gérer la paie, déclarations fiscales et sociales",
+        "Organiser et planifier le travail d'une équipe",
+        "Assurer le secrétariat et l'accueil",
+        "Élaborer des rapports et tableaux de bord"
+      ],
+      "installments": ["À l'inscription", "1re mensualité", "2e mensualité"]
+    },
+    "electricite": {
+      "title": "Électricité",
+      "subtitle": "Spéciale FORMATION en Électricité",
+      "description": "Spécialisez-vous en électricité bâtiment et industrielle.",
+      "filieres": ["Électricité bâtiment", "Électricité industrielle"],
+      "skills": [
+        "Lire et interpréter des schémas électriques",
+        "Réaliser le câblage et les raccordements",
+        "Effectuer la maintenance et le dépannage",
+        "Installer des tableaux et armoires électriques",
+        "Respecter les normes de sécurité électrique",
+        "Travailler sur installations bâtiment et industrielles"
+      ],
+      "certificates": ["Habilitation électrique", "Travaux en hauteur", "Monteur et vérificateur d'échafaudages", "Secourisme (inclus)"],
+      "extras": ["Kit de protection (PSA)", "Polo CFPMIE", "Casquette", "Manuels de cours"],
+      "installments": ["À l'inscription", "1re mensualité", "2e mensualité", "3e mensualité"]
+    }
+  },
+  "seo": {
+    "siteName": "CFPMIE – Centre de Formation Professionnelle Multi-Industriel de l'Excellence"
+  },
+  "languageSwitcher": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

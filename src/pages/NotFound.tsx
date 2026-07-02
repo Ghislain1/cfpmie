@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Home } from 'lucide-react'
 import { motion } from 'framer-motion'
@@ -27,9 +28,10 @@ const numberVariants = {
 }
 
 export default function NotFound() {
+  const { t } = useTranslation()
   return (
     <>
-      <SEO title="Page non trouvée" />
+      <SEO title={t('notFound.seoTitle')} />
       <section className="flex min-h-[70vh] items-center justify-center bg-white dark:bg-gray-950">
         <motion.div
           className="text-center"
@@ -47,13 +49,13 @@ export default function NotFound() {
             variants={itemVariants}
             className="mt-4 font-heading text-2xl font-bold text-foreground"
           >
-            Page non trouvée
+            {t('notFound.title')}
           </motion.h1>
           <motion.p
             variants={itemVariants}
             className="mt-2 text-muted-foreground"
           >
-            La page que vous cherchez n&apos;existe pas ou a été déplacée.
+            {t('notFound.message')}
           </motion.p>
           <motion.div variants={itemVariants} className="mt-6">
             <Link
@@ -65,7 +67,7 @@ export default function NotFound() {
                 aria-hidden="true"
                 className="transition group-hover:-translate-x-1"
               />
-              Retour à l&apos;accueil
+              {t('notFound.button')}
             </Link>
           </motion.div>
         </motion.div>

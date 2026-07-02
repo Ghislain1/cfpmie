@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { Facebook, Instagram, Youtube, Music2, Twitter } from 'lucide-react'
 
@@ -10,17 +12,16 @@ const socials = [
 ]
 
 export default function Footer() {
+  const { t } = useTranslation()
   return (
     <footer className="bg-primary-900 text-primary-50 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <h3 className="font-heading text-lg font-bold">CFPMIE</h3>
-            <p className="mt-2 text-sm text-primary-200 dark:text-primary-300">
-              Centre de Formation Professionnelle<br />Multi-Industriel de l&apos;Excellence
-            </p>
+            <p className="mt-2 text-sm text-primary-200 dark:text-primary-300" dangerouslySetInnerHTML={{ __html: t('footer.description') }} />
             <p className="mt-1 text-xs italic text-primary-300 dark:text-primary-400">
-              &ldquo;Une Formation &ndash; Un Métier &ndash; Un Emploi&rdquo;
+              {t('footer.motto')}
             </p>
             <div className="mt-4 flex gap-3">
               {socials.map((s) => {
@@ -43,31 +44,31 @@ export default function Footer() {
 
           <div>
             <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">
-              Nos formations
+              {t('footer.formations')}
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link to="/formations/construction-metallique" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">
-                  Construction Métallique
+                  {t('footer.constructionMetallique')}
                 </Link>
               </li>
               <li>
                 <Link to="/formations/gestion-finances-management" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">
-                  Gestion des Finances &amp; Management
+                  {t('footer.gestionManagement')}
                 </Link>
               </li>
               <li>
                 <Link to="/formations/electricite" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">
-                  Électricité
+                  {t('footer.electricite')}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">Contact</h4>
+            <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">{t('footer.contact')}</h4>
             <ul className="space-y-2 text-sm text-primary-200 dark:text-primary-300">
-              <li>Chefferie Makepe Missoké, Douala</li>
+              <li>{t('footer.address')}</li>
               <li><a href="tel:+237659245821" className="transition hover:text-white">+237 659 245 821</a></li>
               <li><a href="tel:+237674234872" className="transition hover:text-white">+237 674 234 872</a></li>
               <li><a href="mailto:contact@cfpmie.com" className="transition hover:text-white">contact@cfpmie.com</a></li>
@@ -76,19 +77,19 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">Liens utiles</h4>
+            <h4 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">{t('footer.usefulLinks')}</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/a-propos" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">À propos</Link></li>
-              <li><Link to="/contact" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">Contact</Link></li>
-              <li><a href="https://wa.me/237670109235" target="_blank" rel="noopener noreferrer" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">WhatsApp</a></li>
+              <li><Link to="/a-propos" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.about')}</Link></li>
+              <li><Link to="/contact" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.contact')}</Link></li>
+              <li><a href="https://wa.me/237670109235" target="_blank" rel="noopener noreferrer" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.whatsapp')}</a></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-10 border-t border-primary-700 pt-6 text-center text-xs text-primary-300 dark:border-gray-800 dark:text-primary-400">
-          <p>&copy; {new Date().getFullYear()} CFPMIE &ndash; Tous droits réservés.</p>
+          <p>{t('footer.copyright', { year: new Date().getFullYear() })}</p>
           <p className="mt-1">
-            Sous la tutelle du <strong className="text-primary-100 dark:text-primary-200">MINEFOP</strong> &ndash; Ministère de l&apos;Emploi et de la Formation Professionnelle, Cameroun
+            <Trans i18nKey="footer.minefop" components={{ 1: <strong className="text-primary-100 dark:text-primary-200" /> }} />
           </p>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { Helmet } from 'react-helmet-async'
 
 interface SEOProps {
@@ -6,13 +7,14 @@ interface SEOProps {
   keywords?: string
 }
 
-const SITE_NAME = 'CFPMIE – Centre de Formation Professionnelle Multi-Industriel de l\'Excellence'
-
 export default function SEO({ title, description, keywords }: SEOProps) {
-  const fullTitle = `${title} | ${SITE_NAME}`
+  const { t, i18n } = useTranslation()
+  const siteName = t('seo.siteName')
+  const fullTitle = `${title} | ${siteName}`
 
   return (
     <Helmet>
+      <html lang={i18n.language} />
       <title>{fullTitle}</title>
       {description && <meta name="description" content={description} />}
       {keywords && <meta name="keywords" content={keywords} />}

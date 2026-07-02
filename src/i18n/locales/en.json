@@ -1,0 +1,283 @@
+{
+  "header": {
+    "logoSubtitle": "Under the supervision of MINEFOP",
+    "nav": {
+      "home": "Home",
+      "constructionMetallique": "Metal Construction",
+      "gestionManagement": "Management & Finance",
+      "electricite": "Electrical",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "theme": {
+      "light": "Switch to light mode",
+      "dark": "Switch to dark mode"
+    },
+    "menu": {
+      "open": "Open menu",
+      "close": "Close menu"
+    },
+    "whatsapp": "WhatsApp",
+    "ariaLabel": "Main navigation",
+    "homeAriaLabel": "CFPMIE Home"
+  },
+  "footer": {
+    "description": "Multi-Industrial Vocational Training<br />Center of Excellence",
+    "motto": "«Training – A Trade – A Job»",
+    "formations": "Our Programs",
+    "contact": "Contact",
+    "usefulLinks": "Useful Links",
+    "constructionMetallique": "Metal Construction",
+    "gestionManagement": "Finance & Management",
+    "electricite": "Electrical",
+    "address": "Chefferie Makepe Missoké, Douala",
+    "about": "About",
+    "whatsapp": "WhatsApp",
+    "copyright": "© {{year}} CFPMIE – All rights reserved.",
+    "minefop": "Under the supervision of <1>MINEFOP</1> – Ministry of Employment and Vocational Training, Cameroon"
+  },
+  "layout": {
+    "loading": "Loading…",
+    "loadingLabel": "Loading"
+  },
+  "skipToContent": "Skip to main content",
+  "errorBoundary": {
+    "title": "An error occurred",
+    "message": "Please refresh the page or try again later.",
+    "button": "Refresh page"
+  },
+  "home": {
+    "seoTitle": "Home",
+    "seoDescription": "CFPMIE – vocational training in metal construction, finance management, and electrical engineering in Douala, Cameroon.",
+    "hero": {
+      "badge": "2025 Academic Year",
+      "heading": "A <1>Training</1> –<br /><2>A Trade – A Job</2>",
+      "description": "CFPMIE trains tomorrow's professionals in industrial and management trades.",
+      "ctaInscription": "Register Now",
+      "ctaDecouvrir": "Discover CFPMIE",
+      "quote": "«After the election period, life goes on… and the future is being prepared.»",
+      "quoteCite": "— 2025 Academic Year: November 25, 2025"
+    },
+    "highlights": {
+      "badge": "Why CFPMIE?",
+      "title": "Our Promise",
+      "items": {
+        "practice": { "title": "Hands-on Training", "text": "80% practical workshop time. Our learners build school furniture themselves." },
+        "diplomas": { "title": "Recognized Diplomas", "text": "AQP/CQP/DQP under MINEFOP supervision, plus first-aid certificate included." },
+        "internship": { "title": "Guaranteed Internship", "text": "2-month internship with partner companies for every learner." },
+        "expertise": { "title": "Expert Guidance", "text": "Qualified instructors and modern equipment." }
+      }
+    },
+    "formations": {
+      "badge": "Our Programs",
+      "title": "Choose Your Training",
+      "description": "Three promising sectors to build your professional future."
+    },
+    "gallery": {
+      "badge": "Achievements",
+      "heading": "«At CFPMIE, our learners don't just watch… they build!»",
+      "description": "From day one, our learners get their hands dirty.",
+      "atelier": "Workshop {{number}}",
+      "caption": "[Illustration photos – learner workshops and achievements]"
+    },
+    "cta": {
+      "heading": "Ready to build your future?",
+      "text": "Join CFPMIE and benefit from quality vocational training.",
+      "button": "Register Now",
+      "whatsapp": "Write on WhatsApp"
+    }
+  },
+  "about": {
+    "seoTitle": "About",
+    "seoDescription": "Discover CFPMIE, a vocational training center in Douala under MINEFOP supervision.",
+    "hero": {
+      "badge": "About",
+      "title": "CFPMIE at a Glance",
+      "subtitle": "Multi-Industrial Vocational Training Center of Excellence."
+    },
+    "philosophy": {
+      "title": "Our Philosophy",
+      "quote": "«At CFPMIE, our learners don't just watch… they build!»",
+      "p1": "We believe in learning by doing. From day one, our learners are in the workshop welding, wiring, assembling, and creating.",
+      "p2": "Under the supervision of <1>MINEFOP</1>, CFPMIE is committed to providing quality, accessible training adapted to the Cameroonian market."
+    },
+    "values": {
+      "badge": "Our Values",
+      "title": "What Sets Us Apart",
+      "items": {
+        "practice": { "title": "Practice First", "text": "80% practical workshop time. Learners build school furniture from the first month." },
+        "mentoring": { "title": "Professional Guidance", "text": "Qualified instructors from the professional world accompany each learner." },
+        "employment": { "title": "Job Placement", "text": "Guaranteed internship and job-seeking support for every graduate." },
+        "diplomas": { "title": "State Diplomas", "text": "Training recognized by MINEFOP with AQP, CQP, and DQP diplomas." }
+      }
+    },
+    "facilities": {
+      "badge": "Our Facilities",
+      "title": "Modern Equipment",
+      "items": {
+        "welding": { "title": "Welding Workshop", "desc": "MIG/MAG, TIG, MMA welding stations, boiler-making equipment" },
+        "electrical": { "title": "Electrical Lab", "desc": "Didactic boards, industrial cabinets, diagnostic tools" },
+        "office": { "title": "Computer Lab", "desc": "Computers, accounting and management software" },
+        "workshop": { "title": "Manufacturing Workshop", "desc": "School furniture manufacturing by learners" },
+        "classrooms": { "title": "Classrooms", "desc": "Air-conditioned spaces equipped for theoretical learning" },
+        "lounge": { "title": "Lounge Area", "desc": "Pleasant setting for breaks and exchanges" }
+      },
+      "caption": "[Illustration photos – CFPMIE workshops and equipment]"
+    }
+  },
+  "contact": {
+    "seoTitle": "Contact & Registration",
+    "seoDescription": "Contact CFPMIE in Douala to register for our vocational training programs.",
+    "hero": {
+      "badge": "Registration Open",
+      "title": "Contact & Registration",
+      "description": "Ready to join CFPMIE? Fill out the form or contact us directly."
+    },
+    "form": {
+      "title": "Registration Form",
+      "description": "Fill out this form and we will contact you via WhatsApp.",
+      "successTitle": "Message sent!",
+      "successText": "You will be redirected to WhatsApp to confirm.",
+      "nameLabel": "Full Name",
+      "namePlaceholder": "Your first and last name",
+      "phoneLabel": "Phone",
+      "phonePlaceholder": "+237 6XX XXX XXX",
+      "formationLabel": "Desired Program",
+      "formationPlaceholder": "Select a program",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Your message (optional)",
+      "errors": {
+        "name": "Name must be at least 2 characters",
+        "phone": "Invalid phone number",
+        "formation": "Please select a program"
+      },
+      "submit": "Send via WhatsApp",
+      "sending": "Sending…",
+      "redirectNote": "You will be redirected to WhatsApp to confirm your message.",
+      "required": "*"
+    },
+    "info": {
+      "title": "Our Contact Info",
+      "address": "Address",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "website": "Website",
+      "addressValue": "Chefferie Makepe Missoké, Douala, Cameroon",
+      "phoneValue": "+237 659 245 821 / +237 674 234 872",
+      "whatsappValue": "+237 670 109 235",
+      "emailValue": "contact@cfpmie.com",
+      "websiteValue": "www.formationcfpmie.com"
+    },
+    "social": {
+      "title": "Follow Us"
+    },
+    "map": {
+      "title": "Find Us",
+      "iframeTitle": "CFPMIE Douala Location",
+      "location": "Chefferie Makepe Missoké, Douala"
+    },
+    "whatsappMessage": "Hello CFPMIE! I would like to register.%0A%0AName: {{nom}}%0APhone: {{telephone}}%0AProgram: {{formation}}%0AMessage: {{message}}"
+  },
+  "notFound": {
+    "seoTitle": "Page Not Found",
+    "title": "Page Not Found",
+    "message": "The page you are looking for does not exist or has been moved.",
+    "button": "Back to Home"
+  },
+  "formationCard": {
+    "cta": "Learn More"
+  },
+  "formationDetail": {
+    "badge": "Registration Open",
+    "heroSpecial": "Special",
+    "heroFormation": "TRAINING in",
+    "ctaInscrire": "Register",
+    "whatsapp": "WhatsApp",
+    "sections": {
+      "phase": "Training Phase",
+      "filieres": "Our Tracks",
+      "diplomes": "Diplomas",
+      "competences": "Skills / Expertise",
+      "participation": "Fees"
+    },
+    "phase": {
+      "theoretical": { "months": "6 months", "desc": "Theoretical and practical courses" },
+      "project": { "months": "2 months", "desc": "Practical project" },
+      "internship": { "months": "2 months", "desc": "Guaranteed company internship" }
+    },
+    "diplomes": {
+      "diplomaText": "Professional diplomas recognized by <1>MINEFOP</1>, with first-aid certificate included.",
+      "certificates": "Optional certificates"
+    },
+    "participation": {
+      "feeLabel": "Tuition Fee",
+      "paymentLabel": "Payment in {{count}} installment",
+      "paymentLabel_plural": "Payment in {{count}} installments",
+      "included": "Included in Registration"
+    },
+    "cta": {
+      "heading": "Ready to join the training?",
+      "text": "Register now.",
+      "button": "Register Now"
+    }
+  },
+  "formations": {
+    "construction-metallique": {
+      "title": "Metal Construction",
+      "subtitle": "Special TRAINING in Metal Construction",
+      "description": "Master industrial welding, boiler-making, and industrial piping with a guaranteed company internship.",
+      "filieres": ["Industrial welding and assembly", "Boiler-making and industrial piping"],
+      "skills": [
+        "Read and interpret technical drawings",
+        "Master welding processes (MMA, MIG, TIG)",
+        "Fabricate and assemble metal structures",
+        "Install and maintain piping networks",
+        "Comply with safety and metallurgy standards",
+        "Supervise industrial assembly sites"
+      ],
+      "certificates": ["Working at height", "Scaffold erector and inspector", "First aid (included)"],
+      "extras": ["Protection kit (PPE)", "CFPMIE polo", "Cap", "Course manuals"],
+      "installments": ["At registration", "1st installment", "2nd installment"]
+    },
+    "gestion-finances-management": {
+      "title": "Finance & Management",
+      "subtitle": "Special TRAINING in Finance & Management",
+      "description": "Become a versatile professional in accounting, secretarial, and management.",
+      "filieres": ["Office secretarial", "Executive secretarial", "Management accounting", "Management"],
+      "skills": [
+        "Handle accounting and financial management",
+        "Master office and accounting software",
+        "Manage payroll, tax and social declarations",
+        "Organize and plan team work",
+        "Handle secretarial and reception duties",
+        "Prepare reports and dashboards"
+      ],
+      "installments": ["At registration", "1st installment", "2nd installment"]
+    },
+    "electricite": {
+      "title": "Electrical Engineering",
+      "subtitle": "Special TRAINING in Electrical Engineering",
+      "description": "Specialize in building and industrial electrical engineering.",
+      "filieres": ["Building electrical", "Industrial electrical"],
+      "skills": [
+        "Read and interpret electrical diagrams",
+        "Perform wiring and connections",
+        "Carry out maintenance and troubleshooting",
+        "Install electrical panels and cabinets",
+        "Comply with electrical safety standards",
+        "Work on building and industrial installations"
+      ],
+      "certificates": ["Electrical certification", "Working at height", "Scaffold erector and inspector", "First aid (included)"],
+      "extras": ["Protection kit (PPE)", "CFPMIE polo", "Cap", "Course manuals"],
+      "installments": ["At registration", "1st installment", "2nd installment", "3rd installment"]
+    }
+  },
+  "seo": {
+    "siteName": "CFPMIE – Multi-Industrial Vocational Training Center of Excellence"
+  },
+  "languageSwitcher": {
+    "fr": "Français",
+    "en": "English"
+  }
+}

@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import type { ReactNode, ErrorInfo } from 'react'
+import i18n from 'i18next'
 import { TriangleAlert } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
@@ -29,16 +30,16 @@ export default class ErrorBoundary extends Component<Props, State> {
         <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 px-4 text-center">
           <TriangleAlert className="h-12 w-12 text-accent-500" />
           <h2 className="font-heading text-2xl font-bold text-foreground">
-            Une erreur est survenue
+            {i18n.t('errorBoundary.title')}
           </h2>
           <p className="max-w-md text-muted-foreground">
-            Veuillez rafraîchir la page ou réessayer plus tard.
+            {i18n.t('errorBoundary.message')}
           </p>
           <Button
             variant="secondary"
             onClick={() => window.location.reload()}
           >
-            Rafraîchir la page
+            {i18n.t('errorBoundary.button')}
           </Button>
         </div>
       )

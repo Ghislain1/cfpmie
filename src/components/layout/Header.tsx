@@ -1,17 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { Menu, X, Phone, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import type { NavLink as NavLinkType } from '@/types'
-
-const navLinks: NavLinkType[] = [
-  { to: '/', label: 'Accueil' },
-  { to: '/formations/construction-metallique', label: 'Construction Métallique' },
-  { to: '/formations/gestion-finances-management', label: 'Gestion & Management' },
-  { to: '/formations/electricite', label: 'Électricité' },
-  { to: '/a-propos', label: 'À propos' },
-  { to: '/contact', label: 'Contact' },
-]
 
 function useTheme() {
   const [dark, setDark] = useState(() => {
@@ -30,10 +22,20 @@ function useTheme() {
 }
 
 export default function Header() {
+  const { t, i18n } = useTranslation()
   const [open, setOpen] = useState(false)
   const [dark, setDark] = useTheme()
   const menuRef = useRef<HTMLDivElement>(null)
   const buttonRef = useRef<HTMLButtonElement>(null)
+
+  const navLinks: NavLinkType[] = [
+    { to: '/', label: t('header.nav.home') },
+    { to: '/formations/construction-metallique', label: t('header.nav.constructionMetallique') },
+    { to: '/formations/gestion-finances-management', label: t('header.nav.gestionManagement') },
+    { to: '/formations/electricite', label: t('header.nav.electricite') },
+    { to: '/a-propos', label: t('header.nav.about') },
+    { to: '/contact', label: t('header.nav.contact') },
+  ]
 
   const close = useCallback(() => setOpen(false), [])
 
@@ -67,14 +69,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md dark:bg-gray-900/95">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label="Navigation principale">
-        <Link to="/" className="flex items-center gap-3" onClick={close} aria-label="Accueil CFPMIE">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8" aria-label={t('header.ariaLabel')}>
+        <Link to="/" className="flex items-center gap-3" onClick={close} aria-label={t('header.homeAriaLabel')}>
           <div className="flex flex-col">
             <span className="font-heading text-xl font-extrabold tracking-tight text-primary-800 dark:text-primary-300">
               CFPMIE
             </span>
             <span className="text-[10px] leading-tight text-primary-600 dark:text-primary-400">
-              Sous tutelle du MINEFOP
+              {t('header.logoSubtitle')}
             </span>
           </div>
         </Link>
@@ -82,9 +84,18 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={() => i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr')}
+            className="rounded-lg px-2.5 py-1.5 text-xs font-bold text-primary-800 transition hover:bg-muted dark:text-primary-300 dark:hover:bg-gray-800"
+            aria-label={i18n.language === 'fr' ? 'English' : 'Français'}
+          >
+            {i18n.language === 'fr' ? 'EN' : 'FR'}
+          </button>
+
+          <button
+            type="button"
             onClick={() => setDark(!dark)}
             className="rounded-full p-2 text-gray-600 transition hover:bg-muted dark:text-gray-300 dark:hover:bg-gray-800"
-            aria-label={dark ? 'Activer le mode clair' : 'Activer le mode sombre'}
+            aria-label={dark ? t('header.theme.light') : t('header.theme.dark')}
           >
             {dark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
           </button>
@@ -94,7 +105,7 @@ export default function Header() {
             type="button"
             className="flex flex-col gap-1.5 p-2 lg:hidden"
             onClick={() => setOpen(!open)}
-            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-label={open ? t('header.menu.close') : t('header.menu.open')}
             aria-expanded={open}
             aria-controls="mobile-menu"
           >
@@ -107,11 +118,11 @@ export default function Header() {
           id="mobile-menu"
           role="dialog"
           aria-modal={open}
-          aria-label="Navigation"
+          aria-label={t('header.ariaLabel')}
           className={cn(
             'lg:flex lg:items-center lg:gap-0',
             open
-              ? 'fixed inset-0 top-16 z-40 flex flex-col gap-1 overflow-y-auto bg-white p-6 pt-4 dark:bg-gray-900'
+              ? 'fixed inset-0 top-16 z-50 flex flex-col gap-1 overflow-y-auto bg-white p-6 pt-4 dark:bg-gray-900'
               : 'hidden',
           )}
         >
@@ -142,7 +153,7 @@ export default function Header() {
             className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-600 lg:ml-4 lg:mt-0"
           >
             <Phone size={16} aria-hidden="true" />
-            WhatsApp
+            {t('header.whatsapp')}
           </a>
         </div>
       </nav>

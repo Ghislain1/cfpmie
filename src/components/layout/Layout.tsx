@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header from './Header'
 import Footer from './Footer'
@@ -32,10 +33,11 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 }
 
 function LoadingFallback() {
+  const { t } = useTranslation()
   return (
-    <div className="flex min-h-[60vh] items-center justify-center" aria-live="polite" aria-label="Chargement">
+    <div className="flex min-h-[60vh] items-center justify-center" aria-live="polite" aria-label={t('layout.loadingLabel')}>
       <div className="h-10 w-10 animate-spin rounded-full border-4 border-muted border-t-primary-800" role="status">
-        <span className="sr-only">Chargement en cours…</span>
+        <span className="sr-only">{t('layout.loading')}</span>
       </div>
     </div>
   )
