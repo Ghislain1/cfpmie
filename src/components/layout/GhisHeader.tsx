@@ -5,23 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Phone, Moon, Sun, GraduationCap, ChevronRight, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FireEffect from '@/components/common/FireEffect'
+import { useTheme } from '@/hooks/useTheme'
 import type { NavLink as NavLinkType } from '@/types'
-
-function useTheme() {
-  const [dark, setDark] = useState(() => {
-    if (typeof window === 'undefined') return false
-    const stored = localStorage.getItem('theme')
-    if (stored) return stored === 'dark'
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }, [dark])
-
-  return [dark, setDark] as const
-}
 
 const container = {
   hidden: { opacity: 0 },
@@ -31,6 +16,11 @@ const container = {
 const itemReveal = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 220, damping: 26 } },
+}
+
+const mobileContainer = {
+  closed: { opacity: 0, transition: { duration: 0.2 } },
+  open: { opacity: 1, transition: { duration: 0.25 } },
 }
 
 const mobileOverlay = {
@@ -399,12 +389,13 @@ export default function GhisHeader() {
       {/* Mobile menu */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            className="fixed inset-0 z-40"
-          >
+            <motion.div
+              variants={mobileContainer}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              className="fixed inset-0 z-40"
+            >
             <motion.div
               variants={mobileOverlay}
               className="absolute inset-0 bg-black/40 backdrop-blur-sm"

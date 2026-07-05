@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Footer from './Footer'
 import SkipToContent from '@/components/common/SkipToContent'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
+import { ThemeProvider } from '@/hooks/useTheme'
 import GhisHeader from './GhisHeader'
 
 const pageVariants = {
@@ -47,17 +48,19 @@ export default function Layout() {
   useScrollToTop()
 
   return (
-    <div className="flex min-h-screen flex-col">
-      <SkipToContent />
-      <GhisHeader />
-      <main id="main-content" className="flex-1" tabIndex={-1}>
-        <Suspense fallback={<LoadingFallback />}>
-          <PageTransition>
-            <Outlet />
-          </PageTransition>
-        </Suspense>
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="flex min-h-screen flex-col">
+        <SkipToContent />
+        <GhisHeader />
+        <main id="main-content" className="flex-1" tabIndex={-1}>
+          <Suspense fallback={<LoadingFallback />}>
+            <PageTransition>
+              <Outlet />
+            </PageTransition>
+          </Suspense>
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   )
 }

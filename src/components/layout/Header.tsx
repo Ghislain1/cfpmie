@@ -4,23 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { Menu, X, Phone, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FireEffect from '@/components/common/FireEffect'
+import { useTheme } from '@/hooks/useTheme'
 import type { NavLink as NavLinkType } from '@/types'
-
-function useTheme() {
-  const [dark, setDark] = useState(() => {
-    if (typeof window === 'undefined') return false
-    const stored = localStorage.getItem('theme')
-    if (stored) return stored === 'dark'
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
-
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark)
-    localStorage.setItem('theme', dark ? 'dark' : 'light')
-  }, [dark])
-
-  return [dark, setDark] as const
-}
 
 export default function Header() {
   const { t, i18n } = useTranslation()
