@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { X, Shield } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
@@ -8,30 +8,30 @@ interface DatenschutzModalProps {
   onClose: () => void
 }
 
-const backdropVariants = {
+const backdropVariants: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 }
 
-const modalVariants = {
+const modalVariants: Variants = {
   hidden: { y: 80, opacity: 0, rotate: -0.5 },
   visible: {
     y: 0,
     opacity: 1,
     rotate: 0,
-    transition: { type: 'spring' as const, damping: 22, stiffness: 180, mass: 0.7 },
+    transition: { type: 'spring', damping: 22, stiffness: 180, mass: 0.7 },
   },
   exit: {
     y: 60,
     opacity: 0,
     rotate: 0.3,
-    transition: { duration: 0.3, ease: 'easeIn' as const },
+    transition: { duration: 0.3, ease: 'easeIn' },
   },
 }
 
 const offsets = [-20, 24, -16, 28, -12, 18, -22, 20]
 
-const contentVariants = {
+const contentVariants: Variants = {
   hidden: (i: number) => ({
     opacity: 0,
     y: 30,
@@ -46,7 +46,7 @@ const contentVariants = {
     transition: {
       delay: 0.12 + i * 0.07,
       duration: 0.6,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      ease: [0.25, 0.46, 0.45, 0.94],
     },
   }),
 }
@@ -74,25 +74,30 @@ export function DatenschutzModal({ isOpen, onClose }: DatenschutzModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <motion.div
+          key="datenschutz-wrapper"
+          className="fixed inset-0 z-40"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <motion.div
-            key="datenschutz-backdrop"
             variants={backdropVariants}
             initial="hidden"
             animate="visible"
             exit="hidden"
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/30 backdrop-blur-sm"
             onClick={onClose}
           />
 
           <motion.div
-            key="datenschutz-modal"
             variants={modalVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+            className="absolute inset-0 flex items-center justify-center p-4 pointer-events-none"
           >
             <div className="pointer-events-auto w-full max-w-lg max-h-[85vh] rounded-2xl border border-border bg-white shadow-2xl dark:bg-gray-950 overflow-y-auto">
               <div className="sticky top-0 z-10 flex items-center gap-3 border-b border-border bg-white px-6 py-4 dark:bg-gray-950 rounded-t-2xl">
@@ -134,7 +139,7 @@ export function DatenschutzModal({ isOpen, onClose }: DatenschutzModalProps) {
               </div>
             </div>
           </motion.div>
-        </>
+        </motion.div>
       )}
     </AnimatePresence>
   )

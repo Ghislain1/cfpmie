@@ -33,6 +33,7 @@
     "address": "Chefferie Makepe Missoké, Douala",
     "about": "À propos",
     "whatsapp": "WhatsApp",
+    "datenschutz": "Politique de confidentialité",
     "copyright": "© {{year}} CFPMIE – Tous droits réservés.",
     "minefop": "Sous la tutelle du <1>MINEFOP</1> – Ministère de l'Emploi et de la Formation Professionnelle, Cameroun"
   },
@@ -279,5 +280,33 @@
   "languageSwitcher": {
     "fr": "Français",
     "en": "English"
+  },
+  "datenschutz": {
+    "title": "Politique de confidentialité",
+    "close": "Fermer",
+    "overview": {
+      "heading": "Aperçu",
+      "body": "Nous prenons très au sérieux la protection de vos données personnelles. Cette politique de confidentialité explique comment nous collectons, utilisons et protégeons vos informations lorsque vous visitez notre site web ou utilisez nos services."
+    },
+    "dataCollected": {
+      "heading": "Données collectées",
+      "body": "Nous collectons uniquement les données que vous fournissez volontairement via notre formulaire de contact : nom, numéro de téléphone, formation souhaitée et message optionnel. Nous collectons également des données d'utilisation anonymisées via des cookies pour améliorer notre site."
+    },
+    "purpose": {
+      "heading": "Finalité du traitement",
+      "body": "Vos données sont utilisées uniquement pour répondre à vos demandes, traiter vos inscriptions et améliorer nos services. Nous ne partageons pas vos données avec des tiers sans votre consentement explicite."
+    },
+    "cookies": {
+      "heading": "Cookies",
+      "body": "Notre site utilise un minimum de cookies nécessaires au fonctionnement et aux analyses. Vous pouvez désactiver les cookies dans les paramètres de votre navigateur à tout moment."
+    },
+    "rights": {
+      "heading": "Vos droits",
+      "body": "Vous avez le droit d'accéder à vos données, de les rectifier ou de les supprimer à tout moment. Pour exercer ces droits, veuillez nous contacter via les coordonnées ci-dessous."
+    },
+    "contact": {
+      "heading": "Contact",
+      "body": "Pour toute question relative à la protection des données, vous pouvez nous joindre à :\nCFPMIE\nChefferie Makepe Missoké, Douala, Cameroun\nEmail : contact@cfpmie.com\nTéléphone : +237 659 245 821"
+    }
   }
 }

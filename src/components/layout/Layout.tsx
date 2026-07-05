@@ -58,6 +58,8 @@ export default function Layout() {
     setDatenschutzOpen(false)
   }
 
+  const openDatenschutz = () => setDatenschutzOpen(true)
+
   return (
     <ThemeProvider>
       <div className="flex min-h-screen flex-col">
@@ -71,7 +73,7 @@ export default function Layout() {
           </Suspense>
         </main>
         <FloatingButtons />
-        <Footer />
+        <Footer onOpenDatenschutz={openDatenschutz} />
         <DatenschutzModal isOpen={datenschutzOpen} onClose={closeDatenschutz} />
       </div>
     </ThemeProvider>

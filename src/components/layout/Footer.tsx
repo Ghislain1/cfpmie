@@ -11,7 +11,11 @@ const socials = [
   { name: 'X', icon: Twitter, href: '#' },
 ]
 
-export default function Footer() {
+interface FooterProps {
+  onOpenDatenschutz?: () => void
+}
+
+export default function Footer({ onOpenDatenschutz }: FooterProps) {
   const { t } = useTranslation()
   return (
     <footer className="bg-primary-900 text-primary-50 dark:bg-gray-950">
@@ -82,6 +86,15 @@ export default function Footer() {
               <li><Link to="/a-propos" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.about')}</Link></li>
               <li><Link to="/contact" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.contact')}</Link></li>
               <li><a href="https://wa.me/237670109235" target="_blank" rel="noopener noreferrer" className="text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white">{t('footer.whatsapp')}</a></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={onOpenDatenschutz}
+                  className="cursor-pointer text-primary-200 transition hover:text-white dark:text-primary-300 dark:hover:text-white"
+                >
+                  {t('footer.datenschutz')}
+                </button>
+              </li>
             </ul>
           </div>
         </div>
