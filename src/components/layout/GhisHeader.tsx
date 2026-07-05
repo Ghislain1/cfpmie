@@ -1,39 +1,39 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { Phone, Moon, Sun, GraduationCap, ChevronRight, Sparkles } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FireEffect from '@/components/common/FireEffect'
 import { useTheme } from '@/hooks/useTheme'
 import type { NavLink as NavLinkType } from '@/types'
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.05 } },
 }
 
-const itemReveal = {
+const itemReveal: Variants = {
   hidden: { opacity: 0, y: -10 },
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 220, damping: 26 } },
 }
 
-const mobileContainer = {
+const mobileContainer: Variants = {
   closed: { opacity: 0, transition: { duration: 0.2 } },
   open: { opacity: 1, transition: { duration: 0.25 } },
 }
 
-const mobileOverlay = {
+const mobileOverlay: Variants = {
   closed: { opacity: 0, transition: { duration: 0.25 } },
   open: { opacity: 1, transition: { duration: 0.3 } },
 }
 
-const mobilePanel = {
+const mobilePanel: Variants = {
   closed: { opacity: 0, x: '100%', transition: { type: 'spring', stiffness: 350, damping: 32 } },
   open: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 350, damping: 32 } },
 }
 
-const mobileLink = {
+const mobileLink: Variants = {
   closed: { opacity: 0, x: 40 },
   open: (i: number) => ({ opacity: 1, x: 0, transition: { delay: 0.06 + i * 0.04, type: 'spring', stiffness: 200 } }),
 }

@@ -8,6 +8,7 @@ import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { ThemeProvider } from '@/hooks/useTheme'
 import GhisHeader from './GhisHeader'
 import { FloatingButtons } from '../ui/FloatingButtons'
+import { DatenschutzModal } from '../ui/DatenschutzModal'
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -47,6 +48,15 @@ function LoadingFallback() {
 
 export default function Layout() {
   useScrollToTop()
+  const [datenschutzOpen, setDatenschutzOpen] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return !localStorage.getItem('datenschutz-accepted')
+  })
+
+  const closeDatenschutz = () => {
+    localStorage.setItem('datenschutz-accepted', 'true')
+    setDatenschutzOpen(false)
+  }
 
   return (
     <ThemeProvider>
@@ -62,6 +72,7 @@ export default function Layout() {
         </main>
         <FloatingButtons />
         <Footer />
+        <DatenschutzModal isOpen={datenschutzOpen} onClose={closeDatenschutz} />
       </div>
     </ThemeProvider>
   )
