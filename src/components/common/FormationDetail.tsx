@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import CTAButton from '@/components/common/CTAButton'
+import FireEffect from '@/components/common/FireEffect'
 import type { Formation } from '@/types'
 
 interface FormationDetailProps {
@@ -200,10 +201,11 @@ export default function FormationDetail({ formation: f }: FormationDetailProps) 
               href="https://wa.me/237670109235"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-primary-800"
+              className="relative inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-primary-800"
             >
               <Phone size={16} aria-hidden="true" />
               {t('formationDetail.whatsapp')}
+              <FireEffect />
             </a>
           </div>
         </div>

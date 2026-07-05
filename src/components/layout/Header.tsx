@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, X, Phone, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import FireEffect from '@/components/common/FireEffect'
 import type { NavLink as NavLinkType } from '@/types'
 
 function useTheme() {
@@ -107,10 +108,11 @@ export default function Header() {
             href="https://wa.me/237670109235"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-2 inline-flex items-center gap-2 rounded-full bg-accent-500 px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-600"
+            className="relative ml-2 inline-flex items-center gap-2 rounded-full bg-accent-500 px-4 py-2 text-sm font-bold text-white transition hover:bg-accent-600"
           >
             <Phone size={14} aria-hidden="true" />
             {t('header.whatsapp')}
+            <FireEffect />
           </a>
         </div>
 
@@ -186,10 +188,11 @@ export default function Header() {
         href="https://wa.me/237670109235"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-600"
+        className="relative mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-accent-600"
       >
         <Phone size={16} aria-hidden="true" />
         {t('header.whatsapp')}
+        <FireEffect />
       </a>
     </div>
     </>

@@ -2,10 +2,10 @@ import { Suspense } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
-import Header from './Header'
 import Footer from './Footer'
 import SkipToContent from '@/components/common/SkipToContent'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
+import GhisHeader from './GhisHeader'
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -49,7 +49,7 @@ export default function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <SkipToContent />
-      <Header />
+      <GhisHeader />
       <main id="main-content" className="flex-1" tabIndex={-1}>
         <Suspense fallback={<LoadingFallback />}>
           <PageTransition>

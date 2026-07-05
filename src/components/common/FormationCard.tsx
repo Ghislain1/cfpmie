@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/Card'
 import Badge from '@/components/ui/Badge'
+import FireEffect from '@/components/common/FireEffect'
 import type { Formation } from '@/types'
 
 interface FormationCardProps {
@@ -48,9 +49,10 @@ function FormationCardInner({ formation }: FormationCardProps) {
             <span className="font-heading text-lg font-bold text-accent-600 dark:text-accent-400">
               {formation.price.toLocaleString()} FCFA
             </span>
-            <span className="flex items-center gap-1 rounded-full bg-primary-800 px-4 py-2 text-xs font-bold text-white transition group-hover:bg-primary-700 dark:bg-primary-700 dark:group-hover:bg-primary-600">
+            <span className="relative flex items-center gap-1 rounded-full bg-primary-800 px-4 py-2 text-xs font-bold text-white transition group-hover:bg-primary-700 dark:bg-primary-700 dark:group-hover:bg-primary-600">
               {t('formationCard.cta')}
               <ArrowRight size={14} aria-hidden="true" />
+              <FireEffect />
             </span>
           </div>
         </CardContent>

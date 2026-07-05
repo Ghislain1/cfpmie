@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Phone, GraduationCap, Briefcase, Award, Image as ImageIcon } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import CTAButton from '@/components/common/CTAButton'
+import FireEffect from '@/components/common/FireEffect'
 import FormationCard from '@/components/common/FormationCard'
 import SectionHeading from '@/components/common/SectionHeading'
 import ParallaxSection from '@/components/common/ParallaxSection'
@@ -169,10 +170,11 @@ function CTASection() {
             href="https://wa.me/237670109235"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-accent-500"
+            className="relative inline-flex items-center gap-2 rounded-full border-2 border-white px-6 py-3 text-sm font-bold text-white transition hover:bg-white hover:text-accent-500"
           >
             <Phone size={16} aria-hidden="true" />
             {t('home.cta.whatsapp')}
+            <FireEffect />
           </a>
         </div>
       </div>
