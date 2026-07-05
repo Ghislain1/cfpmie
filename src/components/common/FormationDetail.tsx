@@ -2,9 +2,9 @@ import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
 import { Phone } from 'lucide-react'
+import FireEffect from '@/components/common/FireEffect'
 import Badge from '@/components/ui/Badge'
 import CTAButton from '@/components/common/CTAButton'
-import FireEffect from '@/components/common/FireEffect'
 import type { Formation } from '@/types'
 
 interface FormationDetailProps {
@@ -188,7 +188,7 @@ export default function FormationDetail({ formation: f }: FormationDetailProps) 
             animate={{ opacity: 1, x: 0 }}
             className="mt-4 font-heading text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl"
           >
-            <span className="font-display text-accent-300">{t('formationDetail.heroSpecial')}</span>{' '}
+            <motion.span initial={{ rotate: 0 }} animate={{ rotate: 360 }} transition={{ duration: 1, ease: 'easeInOut' }} className="inline-block font-display text-accent-300">{t('formationDetail.heroSpecial')}</motion.span>{' '}
             <span className="block">{t('formationDetail.heroFormation')}</span>
             <span className="block">{t(`${fKey}.title`)}</span>
           </motion.h1>

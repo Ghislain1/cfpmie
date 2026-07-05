@@ -2,7 +2,7 @@ import { useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
-import { Phone, GraduationCap, Briefcase, Award, Image as ImageIcon } from 'lucide-react'
+import { Phone, GraduationCap, Briefcase, Award } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import CTAButton from '@/components/common/CTAButton'
 import FireEffect from '@/components/common/FireEffect'
@@ -10,10 +10,12 @@ import FormationCard from '@/components/common/FormationCard'
 import SectionHeading from '@/components/common/SectionHeading'
 import ParallaxSection from '@/components/common/ParallaxSection'
 import Particles from '@/components/common/Particles'
+import RainEffect from '@/components/common/RainEffect'
 import ScrollSpyNav from '@/components/common/ScrollSpyNav'
 import SEO from '@/components/common/SEO'
 import { useScrollSpy, getSectionColor } from '@/hooks/useScrollSpy'
 import { formations } from '@/features/formations/formationData'
+import { cn } from '@/lib/utils'
 
 const highlights = [
   { icon: GraduationCap, key: 'practice' },
@@ -21,8 +23,6 @@ const highlights = [
   { icon: Briefcase, key: 'internship' },
   { icon: Phone, key: 'expertise' },
 ]
-
-const gallery = [1, 2, 3, 4]
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -48,12 +48,13 @@ function HeroSection() {
       >
         <source src="/home.mp4" type="video/mp4" />
       </video>
+      <RainEffect density={200} color="rgba(255,255,255,0.8)" speed={0.5} className="absolute inset-0 h-full w-full" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       <div className="relative mx-auto flex min-h-[inherit] max-w-7xl items-center px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
           <Badge variant="orange">{t('home.hero.badge')}</Badge>
           <h1 className="mt-6 font-heading text-4xl font-extrabold leading-tight text-white sm:text-5xl lg:text-6xl">
-            <Trans i18nKey="home.hero.heading" components={{ 1: <span className="font-display text-accent-300" />, 2: <span className="text-5xl sm:text-6xl lg:text-7xl" /> }} />
+            <Trans i18nKey="home.hero.heading" components={{ 1: <motion.span initial={{ rotate: 0 }} animate={{ rotate: 360 }} transition={{ duration: 1, ease: 'easeInOut' }} className="inline-block font-display text-accent-300" />, 2: <span className="text-5xl sm:text-6xl lg:text-7xl" /> }} />
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-primary-100 dark:text-gray-300">
             {t('home.hero.description')}
@@ -111,15 +112,23 @@ function HighlightsSection() {
 
 function GallerySection() {
   const { t } = useTranslation()
+  const items = [
+    { i: 1, span: 'lg:col-span-2 lg:row-span-2', aspect: 'aspect-[4/5] lg:aspect-auto' },
+    { i: 2, span: '', aspect: 'aspect-[3/2]' },
+    { i: 3, span: '', aspect: 'aspect-[1/1]' },
+    { i: 4, span: 'lg:col-span-2', aspect: 'aspect-[3/1] lg:aspect-auto' },
+  ]
   return (
-    <section id="gallery" className="bg-primary-800 py-16 sm:py-20 dark:bg-gray-900">
+    <section className="relative overflow-hidden bg-white py-20 sm:py-28 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <Badge variant="orange">{t('home.gallery.badge')}</Badge>
-          <h2 className="mt-4 font-heading text-3xl font-extrabold text-white sm:text-4xl">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold tracking-[0.2em] text-primary-600 dark:text-primary-400 uppercase">
+            {t('home.gallery.badge')}
+          </p>
+          <h2 className="mt-5 font-heading text-3xl font-light leading-tight text-foreground sm:text-4xl lg:text-5xl">
             {t('home.gallery.heading')}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-primary-200 dark:text-gray-300">
+          <p className="mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground">
             {t('home.gallery.description')}
           </p>
         </div>
@@ -127,25 +136,41 @@ function GallerySection() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          viewport={{ once: true, margin: '-50px' }}
+          className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-[240px_240px]"
         >
-          {gallery.map((i) => (
-            <motion.div
-              key={i}
-              variants={itemVariants}
-              className="group aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800"
-            >
-              <div className="flex h-full items-center justify-center transition group-hover:scale-105">
-                <div className="text-center">
-                  <ImageIcon className="mx-auto h-12 w-12 text-primary-300 dark:text-gray-400" aria-hidden="true" />
-                  <p className="mt-2 text-sm font-medium text-primary-200 dark:text-gray-300">{t('home.gallery.atelier', { number: i })}</p>
+          {items.map(({ i, span, aspect }) => {
+            const gradients = [
+              'from-stone-200 to-stone-300 dark:from-stone-800 dark:to-stone-700',
+              'from-amber-100 to-amber-200 dark:from-amber-900/60 dark:to-amber-800/40',
+              'from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/30',
+              'from-sky-100 to-sky-200 dark:from-sky-900/50 dark:to-sky-800/30',
+            ]
+            return (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className={cn('group relative overflow-hidden rounded-2xl bg-muted', span, aspect)}
+              >
+                <div className={cn(
+                  'absolute inset-0 bg-gradient-to-br transition-all duration-700 group-hover:scale-110',
+                  gradients[i - 1],
+                )}>
+                  <div className="absolute inset-0 opacity-[0.04]" style={{
+                    backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
+                  }} />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute bottom-0 left-0 right-0 translate-y-4 px-5 pb-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <p className="text-sm font-medium text-white drop-shadow-sm">
+                    {t('home.gallery.atelier', { number: i })}
+                  </p>
+                </div>
+              </motion.div>
+            )
+          })}
         </motion.div>
-        <p className="mt-6 text-center text-sm italic text-primary-300 dark:text-gray-400">
+        <p className="mt-10 text-center text-xs text-muted-foreground/60 tracking-wide">
           {t('home.gallery.caption')}
         </p>
       </div>
