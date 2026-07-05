@@ -1,4 +1,4 @@
-import { Suspense } from 'react'
+import { Suspense, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -7,6 +7,7 @@ import SkipToContent from '@/components/common/SkipToContent'
 import { useScrollToTop } from '@/hooks/useScrollToTop'
 import { ThemeProvider } from '@/hooks/useTheme'
 import GhisHeader from './GhisHeader'
+import { FloatingButtons } from '../ui/FloatingButtons'
 
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
@@ -59,6 +60,7 @@ export default function Layout() {
             </PageTransition>
           </Suspense>
         </main>
+        <FloatingButtons />
         <Footer />
       </div>
     </ThemeProvider>
