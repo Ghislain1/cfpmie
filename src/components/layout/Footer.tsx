@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Youtube, Music2, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Music2, Twitter, Shield } from 'lucide-react'
 
 const socials = [
   { name: 'Facebook', icon: Facebook, href: '#' },
@@ -43,6 +43,14 @@ export default function Footer({ onOpenDatenschutz }: FooterProps) {
                   </a>
                 )
               })}
+              <button
+                type="button"
+                onClick={onOpenDatenschutz}
+                aria-label={t('footer.datenschutz')}
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-800 text-primary-200 transition hover:bg-primary-700 hover:text-white dark:bg-gray-800"
+              >
+                <Shield size={16} aria-hidden="true" />
+              </button>
             </div>
           </div>
 
