@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { Phone, Moon, Sun, GraduationCap, ChevronRight, Sparkles } from 'lucide-react'

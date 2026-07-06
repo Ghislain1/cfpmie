@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Menu, X, Phone, Moon, Sun } from 'lucide-react'
 import { cn } from '@/lib/utils'
