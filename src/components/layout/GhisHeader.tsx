@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Link, NavLink } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import { Phone, Moon, Sun, GraduationCap, ChevronRight, Sparkles } from 'lucide-react'
+import { Phone, Moon, Sun, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import FireEffect from '@/components/common/FireEffect'
 import { useTheme } from '@/hooks/useTheme'
@@ -170,7 +170,7 @@ export default function GhisHeader() {
     }
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node) &&
-          buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
+        buttonRef.current && !buttonRef.current.contains(e.target as Node)) {
         close()
       }
     }
@@ -249,18 +249,10 @@ export default function GhisHeader() {
               initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              whileHover={{ scale: 1.08, rotate: 5 }}
-              className="relative flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 text-white shadow-lg shadow-primary-800/20 dark:from-primary-500 dark:to-primary-700"
+              whileHover={{ scale: 1.58, rotate: 5 }}
+              className="relative flex size-9 items-center justify-center"
             >
-              <GraduationCap size={18} />
-              <motion.span
-                className="absolute -top-1 -right-1"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.3 }}
-              >
-                <Sparkles size={8} className="text-primary-300 dark:text-primary-200" />
-              </motion.span>
+              <img src="/pics/logo.svg" alt="CFPMIE" className="h-full w-full" />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-heading text-lg font-extrabold tracking-tight text-foreground">
@@ -389,13 +381,13 @@ export default function GhisHeader() {
       {/* Mobile menu */}
       <AnimatePresence>
         {open && (
-            <motion.div
-              variants={mobileContainer}
-              initial="closed"
-              animate="open"
-              exit="closed"
-              className="fixed inset-0 z-40"
-            >
+          <motion.div
+            variants={mobileContainer}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            className="fixed inset-0 z-40"
+          >
             <motion.div
               variants={mobileOverlay}
               className="absolute inset-0 bg-black/40 backdrop-blur-sm"

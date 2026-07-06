@@ -1,9 +1,10 @@
 import { useRef, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
-import { GraduationCap, Users, Briefcase, Award, Image as ImageIcon } from 'lucide-react'
+import { GraduationCap, Users, Briefcase, Award } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import SectionHeading from '@/components/common/SectionHeading'
+import { SectionGridBuilder, type GridItem } from '@/components/common/SectionGridBuilder'
 import ParallaxSection from '@/components/common/ParallaxSection'
 import SEO from '@/components/common/SEO'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
@@ -15,21 +16,22 @@ const values = [
   { icon: Award, key: 'diplomas' },
 ]
 
-const facilities = [
-  { key: 'welding' },
-  { key: 'electrical' },
-  { key: 'office' },
-  { key: 'workshop' },
-  { key: 'classrooms' },
-  { key: 'lounge' },
-]
+const equipmentImages = ['/pics/flyer1.jpg', '/pics/flyer2.jpg', '/pics/flyer3.jpg', '/pics/flyer4.jpg', '/pics/flyer5.jpg', '/pics/to_video.png']
+
+const equipmentKeys = ['welding', 'electrical', 'office', 'workshop', 'classrooms', 'lounge']
 
 export default function About() {
   const { t } = useTranslation()
   const valuesRef = useRef<HTMLDivElement>(null)
-  const facilitiesRef = useRef<HTMLDivElement>(null)
   useScrollReveal(valuesRef, '.value-card', { stagger: 0.1, y: 24 })
-  useScrollReveal(facilitiesRef, '.facility-card', { stagger: 0.08, y: 24 })
+
+  const equipmentItems: GridItem[] = useMemo(() =>
+    equipmentKeys.map((key, i) => ({
+      image: equipmentImages[i],
+      title: t(`about.facilities.items.${key}.title`),
+      description: t(`about.facilities.items.${key}.desc`),
+    })),
+  [t])
 
   const meta = useMemo(() => ({
     title: t('about.seoTitle'),
@@ -92,28 +94,12 @@ export default function About() {
       </ParallaxSection>
 
       <ParallaxSection className="bg-white py-16 dark:bg-gray-950">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading badge={t('about.facilities.badge')} title={t('about.facilities.title')} />
-          <div ref={facilitiesRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {facilities.map((item) => (
-              <div
-                key={item.key}
-                className="facility-card group overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800"
-              >
-                <div className="flex aspect-[4/3] items-center justify-center p-6 transition group-hover:scale-105">
-                  <div className="text-center">
-                    <ImageIcon className="mx-auto h-10 w-10 text-primary-300 dark:text-gray-400" aria-hidden="true" />
-                    <h3 className="mt-3 font-heading text-lg font-bold text-white">{t(`about.facilities.items.${item.key}.title`)}</h3>
-                    <p className="mt-1 text-sm text-primary-200 dark:text-gray-300">{t(`about.facilities.items.${item.key}.desc`)}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p className="mt-6 text-center text-sm italic text-muted-foreground">
-            {t('about.facilities.caption')}
-          </p>
-        </div>
+        <SectionGridBuilder
+          badge={t('about.facilities.badge')}
+          title={t('about.facilities.title')}
+          items={equipmentItems}
+          caption={t('about.facilities.caption')}
+        />
       </ParallaxSection>
     </>
   )
