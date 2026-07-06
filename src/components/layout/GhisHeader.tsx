@@ -81,22 +81,46 @@ function NoiseOverlay() {
   )
 }
 
+function GlowDot({ className, size }: { className?: string; size?: string }) {
+  return (
+    <span
+      className={cn('absolute rounded-full blur-sm animate-pulse', className)}
+      style={{
+        background: 'radial-gradient(circle, var(--color-primary-400) 0%, transparent 70%)',
+        width: size ?? '3rem',
+        height: size ?? '3rem',
+      }}
+    />
+  )
+}
+
 function ActiveGlow() {
   return (
     <motion.span
       layoutId="activeGlow"
-      className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary-500/15 to-primary-400/10 dark:from-primary-400/20 dark:to-primary-300/10"
+      className="absolute inset-0 rounded-xl"
+      style={{
+        background:
+          'linear-gradient(135deg, var(--color-primary-500) 0%, var(--color-primary-400) 50%, var(--color-primary-300) 100%)',
+        opacity: 0.12,
+        boxShadow: 'inset 0 1px 0 0 rgba(255,255,255,0.3)',
+      }}
       transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     />
   )
 }
 
-function HoverUnderline() {
+function NavHoverGlow() {
   return (
     <motion.span
-      className="absolute -bottom-[3px] left-[10%] h-[2px] w-[80%] rounded-full bg-gradient-to-r from-primary-500 to-primary-400 dark:from-primary-400 dark:to-primary-300"
-      layoutId="hoverUnderline"
-      transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+      layoutId="navHoverGlow"
+      className="absolute inset-0 rounded-xl"
+      style={{
+        background:
+          'linear-gradient(135deg, var(--color-primary-400) 0%, var(--color-primary-300) 50%, var(--color-primary-200) 100%)',
+        opacity: 0.06,
+      }}
+      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
     />
   )
 }
@@ -106,7 +130,7 @@ function Hamburger({ open, toggle, ref }: { open: boolean; toggle: () => void; r
     <button
       ref={ref}
       type="button"
-      className="relative flex size-10 items-center justify-center rounded-xl transition-colors hover:bg-muted lg:hidden"
+      className="relative flex size-10 items-center justify-center rounded-xl border border-white/30 bg-white/50 shadow-sm backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300 lg:hidden"
       onClick={toggle}
       aria-label={open ? 'Close menu' : 'Open menu'}
       aria-expanded={open}
@@ -193,7 +217,7 @@ export default function GhisHeader() {
         className={cn(
           'fixed top-0 right-0 left-0 z-50 transition-all duration-700',
           scrolled
-            ? 'shadow-[0_4px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.4)]'
+            ? 'shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]'
             : '',
         )}
       >
@@ -221,10 +245,18 @@ export default function GhisHeader() {
         <div
           className="absolute inset-0"
           style={{
-            backdropFilter: 'blur(16px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+            backdropFilter: 'blur(20px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(180%)',
           }}
         />
+
+        {/* Subtle gradient border glow */}
+        <div className="absolute inset-0 rounded-b-2xl opacity-20 dark:opacity-30" style={{
+          background: 'linear-gradient(180deg, var(--color-primary-400) 0%, transparent 40%)',
+          mask: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+          WebkitMask: 'linear-gradient(to bottom, black 0%, transparent 100%)',
+          pointerEvents: 'none',
+        }} />
 
         {/* Animated bottom border */}
         <div
@@ -271,7 +303,18 @@ export default function GhisHeader() {
             animate="visible"
             className="hidden items-center lg:flex"
           >
-            <div className="flex items-center gap-0.5">
+            <div className="relative hidden items-center rounded-2xl border border-white/30 bg-white/30 px-1 py-1 shadow-[0_8px_32px_rgba(0,0,0,0.04)] backdrop-blur-xl lg:flex dark:border-white/[0.08] dark:bg-gray-900/30 dark:shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+              {/* Neon border glow */}
+              <div
+                className="pointer-events-none absolute -inset-[1px] rounded-2xl opacity-30 dark:opacity-25"
+                style={{
+                  background: 'linear-gradient(135deg, var(--color-primary-300), transparent 40%, transparent 60%, var(--color-primary-400))',
+                  mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  maskComposite: 'exclude',
+                  WebkitMaskComposite: 'xor',
+                  padding: '1px',
+                }}
+              />
               {navLinks.map((link) => (
                 <motion.div key={link.to} variants={itemReveal}>
                   <NavLink
@@ -282,25 +325,32 @@ export default function GhisHeader() {
                     onMouseLeave={() => setHoveredLink(null)}
                     className={({ isActive }) =>
                       cn(
-                        'relative rounded-xl px-3.5 py-2 text-sm font-medium transition-colors',
+                        'relative rounded-xl px-4 py-2 text-sm font-medium transition-all duration-300',
                         isActive
-                          ? 'text-primary-800 dark:text-primary-300'
-                          : 'text-muted-foreground hover:text-foreground',
+                          ? 'text-primary-900 dark:text-primary-200'
+                          : 'text-muted-foreground/80 hover:text-foreground',
                       )
                     }
                   >
                     {({ isActive }) => (
-                      <span className="relative inline-flex items-center">
+                      <span className="relative inline-flex items-center gap-1.5">
                         {isActive && <ActiveGlow />}
+                        {!isActive && hoveredLink === link.to && <NavHoverGlow />}
                         <span className="relative z-10">{link.label}</span>
                         {isActive && (
-                          <motion.span
-                            className="absolute -bottom-[3px] left-[20%] h-[2px] w-[60%] rounded-full bg-gradient-to-r from-primary-500 to-primary-400 dark:from-primary-400 dark:to-primary-300"
-                            layoutId="activeUnderline"
-                            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                          />
+                          <>
+                            <motion.span
+                              className="absolute -bottom-[3px] left-[15%] h-[2px] w-[70%] rounded-full"
+                              style={{
+                                background: 'linear-gradient(90deg, var(--color-primary-400), var(--color-primary-500), var(--color-primary-400))',
+                                boxShadow: '0 0 6px 1px var(--color-primary-400)',
+                              }}
+                              layoutId="activeUnderline"
+                              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                            />
+                            <GlowDot className="-left-2 size-2 opacity-70" size="0.75rem" />
+                          </>
                         )}
-                        {!isActive && hoveredLink === link.to && <HoverUnderline />}
                       </span>
                     )}
                   </NavLink>
@@ -308,13 +358,13 @@ export default function GhisHeader() {
               ))}
             </div>
 
-            <div className="ml-4 flex items-center gap-2 pl-4 border-l border-border/60">
+            <div className="ml-4 flex items-center gap-2 pl-4 border-l border-white/20 dark:border-white/10">
               <motion.button
                 type="button"
                 onClick={() => setDark(!dark)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.92 }}
-                className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-white/60 hover:text-foreground dark:hover:bg-white/5"
+                className="flex size-8 items-center justify-center rounded-xl border border-white/30 bg-white/50 text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300"
                 aria-label={dark ? t('header.theme.light') : t('header.theme.dark')}
               >
                 <motion.div
@@ -331,7 +381,7 @@ export default function GhisHeader() {
                 onClick={() => i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr')}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.92 }}
-                className="rounded-lg px-2.5 py-1 text-xs font-bold text-muted-foreground transition-colors hover:bg-white/60 hover:text-foreground dark:hover:bg-white/5"
+                className="rounded-xl border border-white/30 bg-white/50 px-2.5 py-1 text-xs font-bold text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300"
                 aria-label={i18n.language === 'fr' ? 'English' : 'Français'}
               >
                 {i18n.language === 'fr' ? 'EN' : 'FR'}
@@ -345,8 +395,10 @@ export default function GhisHeader() {
               variants={itemReveal}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="relative ml-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-700 to-primary-600 px-4 py-2 text-sm font-bold text-white shadow-lg shadow-primary-800/30 transition-shadow hover:shadow-primary-800/40 dark:from-primary-600 dark:to-primary-500 dark:shadow-primary-700/30"
+              className="relative ml-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-primary-500/50 hover:shadow-xl dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
+              style={{ backgroundSize: '200% 100%' }}
             >
+              <GlowDot className="-left-1 size-12 opacity-60" />
               <Phone size={13} aria-hidden="true" />
               {t('header.whatsapp')}
               <FireEffect />
@@ -359,7 +411,7 @@ export default function GhisHeader() {
               type="button"
               onClick={() => setDark(!dark)}
               whileTap={{ scale: 0.92 }}
-              className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-white/60 hover:text-foreground dark:hover:bg-white/5"
+              className="flex size-8 items-center justify-center rounded-xl border border-white/30 bg-white/50 text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300"
               aria-label={dark ? t('header.theme.light') : t('header.theme.dark')}
             >
               {dark ? <Sun size={15} aria-hidden="true" /> : <Moon size={15} aria-hidden="true" />}
@@ -368,7 +420,7 @@ export default function GhisHeader() {
               type="button"
               onClick={() => i18n.changeLanguage(i18n.language === 'fr' ? 'en' : 'fr')}
               whileTap={{ scale: 0.92 }}
-              className="rounded-lg px-2.5 py-1 text-xs font-bold text-muted-foreground transition-colors hover:bg-white/60 hover:text-foreground dark:hover:bg-white/5"
+              className="rounded-xl border border-white/30 bg-white/50 px-2.5 py-1 text-xs font-bold text-muted-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300"
               aria-label={i18n.language === 'fr' ? 'English' : 'Français'}
             >
               {i18n.language === 'fr' ? 'EN' : 'FR'}
@@ -401,17 +453,16 @@ export default function GhisHeader() {
               aria-modal={open}
               aria-label={t('header.ariaLabel')}
               variants={mobilePanel}
-              className="absolute top-0 right-0 flex h-full w-full max-w-sm flex-col bg-white dark:bg-gray-950 shadow-2xl"
-              style={{ borderLeft: '1px solid var(--border)' }}
+              className="absolute top-0 right-0 flex h-full w-full max-w-sm flex-col border-l border-white/20 bg-white/80 shadow-2xl shadow-black/10 backdrop-blur-2xl dark:border-white/5 dark:bg-gray-950/80"
             >
-              <div className="flex items-center justify-between px-6 pt-6 pb-3 border-b border-border/60">
-                <span className="text-[11px] font-semibold text-muted-foreground tracking-[0.15em] uppercase">
+              <div className="flex items-center justify-between border-b border-white/20 px-6 pt-6 pb-3 dark:border-white/5">
+                <span className="text-[11px] font-semibold tracking-[0.15em] text-muted-foreground uppercase">
                   {t('header.ariaLabel')}
                 </span>
                 <button
                   type="button"
                   onClick={close}
-                  className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  className="flex size-8 items-center justify-center rounded-xl border border-white/30 bg-white/50 text-muted-foreground backdrop-blur-sm transition-colors hover:border-primary-400/50 hover:text-primary-700 dark:border-white/10 dark:bg-gray-800/50 dark:hover:border-primary-500/50 dark:hover:text-primary-300"
                   aria-label="Close menu"
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -440,7 +491,7 @@ export default function GhisHeader() {
                             'group relative flex items-center justify-between overflow-hidden rounded-xl px-4 py-3.5 text-sm font-medium transition-all',
                             isActive
                               ? 'text-primary-800 dark:text-primary-300'
-                              : 'text-foreground hover:bg-muted',
+                              : 'text-foreground hover:bg-white/50 dark:hover:bg-white/5',
                           )
                         }
                       >
@@ -449,7 +500,7 @@ export default function GhisHeader() {
                             {isActive && (
                               <motion.span
                                 layoutId="mobileActiveBg"
-                                className="absolute inset-0 bg-gradient-to-r from-primary-50 to-primary-50/50 dark:from-primary-900/40 dark:to-primary-900/20"
+                                className="absolute inset-0 bg-gradient-to-r from-primary-50/80 to-primary-50/30 dark:from-primary-900/50 dark:to-primary-900/20"
                                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                               />
                             )}
@@ -458,7 +509,7 @@ export default function GhisHeader() {
                                 className={cn(
                                   'h-1.5 w-1.5 rounded-full transition-all duration-300',
                                   isActive
-                                    ? 'bg-primary-500 shadow-[0_0_8px_rgba(76,175,80,0.5)] scale-100'
+                                    ? 'bg-primary-500 shadow-[0_0_10px_rgba(76,175,80,0.6)] scale-100'
                                     : 'bg-border scale-0',
                                 )}
                               />
@@ -469,8 +520,8 @@ export default function GhisHeader() {
                               className={cn(
                                 'relative transition-all duration-300',
                                 isActive
-                                  ? 'opacity-100 translate-x-0 text-primary-500'
-                                  : 'opacity-0 -translate-x-2',
+                                  ? 'translate-x-0 text-primary-500 opacity-100'
+                                  : '-translate-x-2 opacity-0',
                               )}
                             />
                           </>
@@ -481,7 +532,7 @@ export default function GhisHeader() {
                 </div>
               </div>
 
-              <div className="px-4 pb-6 pt-4 border-t border-border/60">
+              <div className="border-t border-white/20 px-4 pt-4 pb-6 dark:border-white/5">
                 <motion.a
                   href="https://wa.me/237670109235"
                   target="_blank"
@@ -492,8 +543,10 @@ export default function GhisHeader() {
                   exit="closed"
                   custom={navLinks.length}
                   whileTap={{ scale: 0.98 }}
-                  className="relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-700 to-primary-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary-800/30 dark:from-primary-600 dark:to-primary-500"
+                  className="relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-xl hover:shadow-primary-500/50 dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
+                  style={{ backgroundSize: '200% 100%' }}
                 >
+                  <GlowDot className="-left-1 size-14 opacity-60" />
                   <Phone size={15} aria-hidden="true" />
                   {t('header.whatsapp')}
                   <FireEffect />
