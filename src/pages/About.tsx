@@ -1,12 +1,12 @@
-import { useMemo } from 'react'
+import { useRef, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
-import { motion } from 'framer-motion'
 import { GraduationCap, Users, Briefcase, Award, Image as ImageIcon } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import SectionHeading from '@/components/common/SectionHeading'
 import ParallaxSection from '@/components/common/ParallaxSection'
 import SEO from '@/components/common/SEO'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 
 const values = [
   { icon: GraduationCap, key: 'practice' },
@@ -24,18 +24,12 @@ const facilities = [
   { key: 'lounge' },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
-
 export default function About() {
   const { t } = useTranslation()
+  const valuesRef = useRef<HTMLDivElement>(null)
+  const facilitiesRef = useRef<HTMLDivElement>(null)
+  useScrollReveal(valuesRef, '.value-card', { stagger: 0.1, y: 24 })
+  useScrollReveal(facilitiesRef, '.facility-card', { stagger: 0.08, y: 24 })
 
   const meta = useMemo(() => ({
     title: t('about.seoTitle'),
@@ -77,48 +71,34 @@ export default function About() {
       <ParallaxSection className="bg-primary-50 py-16 dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading badge={t('about.values.badge')} title={t('about.values.title')} />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 grid gap-6 sm:grid-cols-2"
-          >
+          <div ref={valuesRef} className="mt-12 grid gap-6 sm:grid-cols-2">
             {values.map((v) => {
               const Icon = v.icon
               return (
-                <motion.div
+                <div
                   key={v.key}
-                  variants={itemVariants}
-                  className="rounded-2xl border border-border bg-white p-6 shadow-sm dark:bg-gray-800"
+                  className="value-card rounded-2xl border border-border bg-white p-6 shadow-sm dark:bg-gray-800"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-800 text-white dark:bg-primary-700">
                     <Icon size={20} aria-hidden="true" />
                   </div>
                   <h3 className="mt-4 font-heading text-lg font-bold text-primary-800 dark:text-primary-200">{t(`about.values.items.${v.key}.title`)}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(`about.values.items.${v.key}.text`)}</p>
-                </motion.div>
+                </div>
               )
             })}
-          </motion.div>
+          </div>
         </div>
       </ParallaxSection>
 
       <ParallaxSection className="bg-white py-16 dark:bg-gray-950">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading badge={t('about.facilities.badge')} title={t('about.facilities.title')} />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          >
+          <div ref={facilitiesRef} className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {facilities.map((item) => (
-              <motion.div
+              <div
                 key={item.key}
-                variants={itemVariants}
-                className="group overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800"
+                className="facility-card group overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800"
               >
                 <div className="flex aspect-[4/3] items-center justify-center p-6 transition group-hover:scale-105">
                   <div className="text-center">
@@ -127,9 +107,9 @@ export default function About() {
                     <p className="mt-1 text-sm text-primary-200 dark:text-gray-300">{t(`about.facilities.items.${item.key}.desc`)}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
           <p className="mt-6 text-center text-sm italic text-muted-foreground">
             {t('about.facilities.caption')}
           </p>

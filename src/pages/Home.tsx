@@ -1,4 +1,4 @@
-import { useMemo, useEffect } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Trans } from 'react-i18next'
 import { motion } from 'framer-motion'
@@ -14,6 +14,7 @@ import RainEffect from '@/components/common/RainEffect'
 import ScrollSpyNav from '@/components/common/ScrollSpyNav'
 import SEO from '@/components/common/SEO'
 import { useScrollSpy, getSectionColor } from '@/hooks/useScrollSpy'
+import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { formations } from '@/features/formations/formationData'
 import { cn } from '@/lib/utils'
 
@@ -23,16 +24,6 @@ const highlights = [
   { icon: Briefcase, key: 'internship' },
   { icon: Phone, key: 'expertise' },
 ]
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-}
 
 function HeroSection() {
   const { t } = useTranslation()
@@ -77,34 +68,29 @@ function HeroSection() {
 
 function HighlightsSection() {
   const { t } = useTranslation()
+  const ref = useRef<HTMLDivElement>(null)
+  useScrollReveal(ref, '.highlight-card', { stagger: 0.1, y: 24 })
   return (
     <section id="highlights" className="bg-white py-16 sm:py-20 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeading badge={t('home.highlights.badge')} title={t('home.highlights.title')} />
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
-        >
+        <div ref={ref} className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((h) => {
             const Icon = h.icon
             return (
-              <motion.div
+              <div
                 key={h.key}
-                variants={itemVariants}
-                className="rounded-2xl border border-border bg-muted/50 p-6 text-center transition hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
+                className="highlight-card rounded-2xl border border-border bg-muted/50 p-6 text-center transition hover:-translate-y-1 hover:shadow-md dark:border-gray-700 dark:bg-gray-900"
               >
                 <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-primary-800 text-white dark:bg-primary-700">
                   <Icon size={22} aria-hidden="true" />
                 </div>
                 <h3 className="mt-4 font-heading text-lg font-bold text-primary-800 dark:text-primary-200">{t(`home.highlights.items.${h.key}.title`)}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t(`home.highlights.items.${h.key}.text`)}</p>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
@@ -112,6 +98,8 @@ function HighlightsSection() {
 
 function GallerySection() {
   const { t } = useTranslation()
+  const ref = useRef<HTMLDivElement>(null)
+  useScrollReveal(ref, '.gallery-item', { stagger: 0.1, y: 30 })
   const items = [
     { i: 1, span: 'lg:col-span-2 lg:row-span-2', aspect: 'aspect-[4/5] lg:aspect-auto' },
     { i: 2, span: '', aspect: 'aspect-[3/2]' },
@@ -132,13 +120,7 @@ function GallerySection() {
             {t('home.gallery.description')}
           </p>
         </div>
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-[240px_240px]"
-        >
+        <div ref={ref} className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-[240px_240px]">
           {items.map(({ i, span, aspect }) => {
             const gradients = [
               'from-stone-200 to-stone-300 dark:from-stone-800 dark:to-stone-700',
@@ -147,10 +129,9 @@ function GallerySection() {
               'from-sky-100 to-sky-200 dark:from-sky-900/50 dark:to-sky-800/30',
             ]
             return (
-              <motion.div
+              <div
                 key={i}
-                variants={itemVariants}
-                className={cn('group relative overflow-hidden rounded-2xl bg-muted', span, aspect)}
+                className={cn('gallery-item group relative overflow-hidden rounded-2xl bg-muted', span, aspect)}
               >
                 <div className={cn(
                   'absolute inset-0 bg-gradient-to-br transition-all duration-700 group-hover:scale-110',
@@ -166,10 +147,10 @@ function GallerySection() {
                     {t('home.gallery.atelier', { number: i })}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
-        </motion.div>
+        </div>
         <p className="mt-10 text-center text-xs text-muted-foreground/60 tracking-wide">
           {t('home.gallery.caption')}
         </p>
@@ -212,6 +193,8 @@ const sectionIds = ['hero', 'formations', 'highlights', 'gallery', 'cta']
 export default function Home() {
   const { t } = useTranslation()
   const activeId = useScrollSpy(sectionIds)
+  const formationsRef = useRef<HTMLDivElement>(null)
+  useScrollReveal(formationsRef, '.formation-card', { stagger: 0.1, y: 24 })
 
   useEffect(() => {
     document.documentElement.style.setProperty('--scrollbar-color', getSectionColor(activeId))
@@ -250,19 +233,16 @@ export default function Home() {
             title={t('home.formations.title')}
             description={t('home.formations.description')}
           />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+          <div
+            ref={formationsRef}
             className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
           >
             {formations.map((f) => (
-              <motion.div key={f.slug} variants={itemVariants}>
+              <div key={f.slug} className="formation-card">
                 <FormationCard formation={f} />
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </ParallaxSection>
       <ParallaxSection><HighlightsSection /></ParallaxSection>
