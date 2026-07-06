@@ -66,7 +66,7 @@ export default function Contact() {
   return (
     <>
       <SEO {...meta} />
-      <section className="bg-gradient-to-br from-primary-800 via-primary-700 to-primary-600 py-16 sm:py-20 dark:from-gray-900 dark:to-gray-800">
+      <section className="bg-linear-to-br from-primary-800 via-primary-700 to-primary-600 py-16 sm:py-20 dark:from-gray-900 dark:to-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Badge variant="orange">{t('contact.hero.badge')}</Badge>
           <motion.h1

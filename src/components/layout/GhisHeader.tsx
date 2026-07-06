@@ -136,20 +136,20 @@ function Hamburger({ open, toggle, ref }: { open: boolean; toggle: () => void; r
       aria-expanded={open}
       aria-controls="mobile-menu"
     >
-      <div className="flex flex-col items-center justify-center gap-[5px]">
+      <div className="flex flex-col items-center justify-center gap-1.5">
         <motion.span
           animate={open ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
-          className="block h-[2px] w-5 rounded-full bg-foreground dark:bg-white"
+          className="block h-0.5 w-5 rounded-full bg-foreground dark:bg-white"
           transition={{ type: 'spring', stiffness: 350, damping: 22 }}
         />
         <motion.span
           animate={open ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
-          className="block h-[2px] w-5 rounded-full bg-foreground dark:bg-white"
+          className="block h-0.5 w-5 rounded-full bg-foreground dark:bg-white"
           transition={{ type: 'spring', stiffness: 350, damping: 22 }}
         />
         <motion.span
           animate={open ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
-          className="block h-[2px] w-5 rounded-full bg-foreground dark:bg-white"
+          className="block h-0.5 w-5 rounded-full bg-foreground dark:bg-white"
           transition={{ type: 'spring', stiffness: 350, damping: 22 }}
         />
       </div>
@@ -340,7 +340,7 @@ export default function GhisHeader() {
                         {isActive && (
                           <>
                             <motion.span
-                              className="absolute -bottom-[3px] left-[15%] h-[2px] w-[70%] rounded-full"
+                              className="absolute -bottom-[3px] left-[15%] h-0.5 w-[70%] rounded-full"
                               style={{
                                 background: 'linear-gradient(90deg, var(--color-primary-400), var(--color-primary-500), var(--color-primary-400))',
                                 boxShadow: '0 0 6px 1px var(--color-primary-400)',
@@ -395,7 +395,7 @@ export default function GhisHeader() {
               variants={itemReveal}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              className="relative ml-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-primary-500/50 hover:shadow-xl dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
+              className="relative ml-4 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-primary-500/50 hover:shadow-xl dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
               style={{ backgroundSize: '200% 100%' }}
             >
               <GlowDot className="-left-1 size-12 opacity-60" />
@@ -500,7 +500,7 @@ export default function GhisHeader() {
                             {isActive && (
                               <motion.span
                                 layoutId="mobileActiveBg"
-                                className="absolute inset-0 bg-gradient-to-r from-primary-50/80 to-primary-50/30 dark:from-primary-900/50 dark:to-primary-900/20"
+                                className="absolute inset-0 bg-linear-to-r from-primary-50/80 to-primary-50/30 dark:from-primary-900/50 dark:to-primary-900/20"
                                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                               />
                             )}
@@ -543,7 +543,7 @@ export default function GhisHeader() {
                   exit="closed"
                   custom={navLinks.length}
                   whileTap={{ scale: 0.98 }}
-                  className="relative flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-xl hover:shadow-primary-500/50 dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
+                  className="relative flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-primary-600 via-primary-500 to-primary-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-primary-500/30 transition-all hover:shadow-xl hover:shadow-primary-500/50 dark:from-primary-500 dark:via-primary-400 dark:to-primary-500 dark:shadow-primary-400/30"
                   style={{ backgroundSize: '200% 100%' }}
                 >
                   <GlowDot className="-left-1 size-14 opacity-60" />

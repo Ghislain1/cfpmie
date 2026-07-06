@@ -18,7 +18,7 @@ function FormationCardInner({ formation }: FormationCardProps) {
   return (
     <Link to={`/formations/${formation.slug}`} className="group block h-full">
       <Card className="flex h-full flex-col">
-        <div className="relative flex h-48 items-center justify-center bg-gradient-to-br from-primary-600 to-primary-800">
+        <div className="relative flex h-48 items-center justify-center bg-linear-to-br from-primary-600 to-primary-800">
           <span className="font-heading text-2xl font-bold text-white/80">
             {t(`${fKey}.title`)}
           </span>
