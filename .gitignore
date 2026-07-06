@@ -1,3 +1,5 @@
+netlify/functions/server-build.cjs
+
 # Logs
 logs
 *.log
