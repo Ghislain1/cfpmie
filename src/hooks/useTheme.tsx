@@ -12,7 +12,11 @@ function getInitialDark(): boolean {
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [dark, setDark] = useState(getInitialDark)
+  const [dark, setDark] = useState(false)
+
+  useEffect(() => {
+    setDark(getInitialDark())
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', dark)

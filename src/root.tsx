@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Outlet, useLocation } from 'react-router'
 import { useTranslation } from 'react-i18next'
@@ -51,10 +51,13 @@ function LoadingFallback() {
 export default function Root() {
   useScrollToTop()
   const { i18n } = useTranslation()
-  const [datenschutzOpen, setDatenschutzOpen] = useState(() => {
-    if (typeof window === 'undefined') return false
-    return !localStorage.getItem('datenschutz-accepted')
-  })
+  const [datenschutzOpen, setDatenschutzOpen] = useState(false)
+
+  useEffect(() => {
+    if (!localStorage.getItem('datenschutz-accepted')) {
+      setDatenschutzOpen(true)
+    }
+  }, [])
 
   const closeDatenschutz = () => {
     localStorage.setItem('datenschutz-accepted', 'true')

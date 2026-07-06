@@ -6,6 +6,7 @@ import type { RenderToPipeableStreamOptions } from 'react-dom/server'
 import { renderToPipeableStream } from 'react-dom/server'
 import type { EntryContext, RouterContextProvider } from 'react-router'
 import { ServerRouter } from 'react-router'
+import { initI18n } from '@/i18n'
 
 export const streamTimeout = 5_000
 
@@ -16,6 +17,9 @@ export default function handleRequest(
   routerContext: EntryContext,
   _loadContext: RouterContextProvider,
 ) {
+  const lang = request.headers.get('Accept-Language')?.split(',')[0]?.split('-')[0] || 'fr'
+  initI18n(lang)
+
   if (request.method.toUpperCase() === 'HEAD') {
     return new Response(null, {
       status: responseStatusCode,
