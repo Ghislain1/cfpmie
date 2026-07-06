@@ -23,7 +23,7 @@ function FormationCardInner({ formation }: FormationCardProps) {
             {t(`${fKey}.title`)}
           </span>
           {formation.badgeText && (
-            <div className="absolute right-3 top-3">
+            <div className="absolute right-3 top-0 rotate-40">
               <Badge variant="orange">{formation.badgeText}</Badge>
             </div>
           )}
