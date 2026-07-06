@@ -1,6 +1,6 @@
 import { Suspense, useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Outlet, useLocation } from 'react-router'
+import { Links, Outlet, Scripts, ScrollRestoration, useLocation } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { motion, AnimatePresence } from 'framer-motion'
 import Footer from '@/components/layout/Footer'
@@ -70,11 +70,13 @@ export default function Root() {
     <ThemeProvider>
       <Helmet>
         <html lang={i18n.language} />
+        <meta name="lang" content={i18n.language} />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
       </Helmet>
+      <Links />
       <ErrorBoundary>
         <div className="flex min-h-screen flex-col">
           <SkipToContent />
@@ -89,6 +91,8 @@ export default function Root() {
           <FloatingButtons />
           <Footer onOpenDatenschutz={openDatenschutz} />
           <DatenschutzModal isOpen={datenschutzOpen} onClose={closeDatenschutz} />
+          <ScrollRestoration />
+          <Scripts />
         </div>
       </ErrorBoundary>
     </ThemeProvider>

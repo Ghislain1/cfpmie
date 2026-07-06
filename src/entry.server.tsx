@@ -6,6 +6,7 @@ import type { RenderToPipeableStreamOptions } from 'react-dom/server'
 import { renderToPipeableStream } from 'react-dom/server'
 import type { EntryContext, RouterContextProvider } from 'react-router'
 import { ServerRouter } from 'react-router'
+import { HelmetProvider } from 'react-helmet-async'
 import { initI18n } from '@/i18n'
 
 export const streamTimeout = 5_000
@@ -42,7 +43,9 @@ export default function handleRequest(
     )
 
     const { pipe, abort } = renderToPipeableStream(
-      <ServerRouter context={routerContext} url={request.url} />,
+      <HelmetProvider>
+        <ServerRouter context={routerContext} url={request.url} />
+      </HelmetProvider>,
       {
         [readyOption]() {
           shellRendered = true

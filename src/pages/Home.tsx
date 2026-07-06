@@ -101,10 +101,10 @@ function GallerySection() {
   const ref = useRef<HTMLDivElement>(null)
   useScrollReveal(ref, '.gallery-item', { stagger: 0.1, y: 30 })
   const items = [
-    { i: 1, span: 'lg:col-span-2 lg:row-span-2', aspect: 'aspect-[4/5] lg:aspect-auto' },
-    { i: 2, span: '', aspect: 'aspect-[3/2]' },
-    { i: 3, span: '', aspect: 'aspect-[1/1]' },
-    { i: 4, span: 'lg:col-span-2', aspect: 'aspect-[3/1] lg:aspect-auto' },
+    { i: 1, span: 'lg:col-span-2 lg:row-span-2', aspect: 'aspect-[4/5] lg:aspect-auto', src: '/pics/cfpmie.png' },
+    { i: 2, span: '', aspect: 'aspect-[3/2]', src: '/pics/flyer1.jpg' },
+    { i: 3, span: '', aspect: 'aspect-[1/1]', src: '/pics/flyer2.jpg' },
+    { i: 4, span: 'lg:col-span-2', aspect: 'aspect-[3/1] lg:aspect-auto', src: '/pics/to_video.png' },
   ]
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-28 dark:bg-gray-950">
@@ -121,27 +121,18 @@ function GallerySection() {
           </p>
         </div>
         <div ref={ref} className="mt-14 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-[240px_240px]">
-          {items.map(({ i, span, aspect }) => {
-            const gradients = [
-              'from-stone-200 to-stone-300 dark:from-stone-800 dark:to-stone-700',
-              'from-amber-100 to-amber-200 dark:from-amber-900/60 dark:to-amber-800/40',
-              'from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/30',
-              'from-sky-100 to-sky-200 dark:from-sky-900/50 dark:to-sky-800/30',
-            ]
+          {items.map(({ i, span, aspect, src }) => {
             return (
               <div
                 key={i}
                 className={cn('gallery-item group relative overflow-hidden rounded-2xl bg-muted', span, aspect)}
               >
-                <div className={cn(
-                  'absolute inset-0 bg-gradient-to-br transition-all duration-700 group-hover:scale-110',
-                  gradients[i - 1],
-                )}>
-                  <div className="absolute inset-0 opacity-[0.04]" style={{
-                    backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.15\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
-                  }} />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                <img
+                  src={src}
+                  alt={t('home.gallery.atelier', { number: i })}
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="absolute bottom-0 left-0 right-0 translate-y-4 px-5 pb-5 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
                   <p className="text-sm font-medium text-white drop-shadow-sm">
                     {t('home.gallery.atelier', { number: i })}
