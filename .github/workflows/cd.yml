@@ -28,14 +28,7 @@ jobs:
         run: cp build/server/index.js netlify/functions/server-build.cjs
 
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v3
-        with:
-          publish-dir: ./build/client
-          functions-dir: ./netlify/functions
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
+        run: npx netlify-cli deploy --prod --dir=./build/client --functions=./netlify/functions
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
