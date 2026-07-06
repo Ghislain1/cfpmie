@@ -31,7 +31,7 @@ export default function About() {
       title: t(`about.facilities.items.${key}.title`),
       description: t(`about.facilities.items.${key}.desc`),
     })),
-  [t])
+    [t])
 
   const meta = useMemo(() => ({
     title: t('about.seoTitle'),
@@ -41,7 +41,7 @@ export default function About() {
   return (
     <>
       <SEO {...meta} />
-      <section className="bg-gradient-to-br from-primary-800 via-primary-700 to-primary-600 py-16 sm:py-20 dark:from-gray-900 dark:to-gray-800">
+      <section className="bg-linear-to-br from-primary-800 via-primary-700 to-primary-600 py-16 sm:py-20 dark:from-gray-900 dark:to-gray-800">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Badge variant="orange">{t('about.hero.badge')}</Badge>
           <h1 className="mt-4 font-heading text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">

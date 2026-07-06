@@ -1,4 +1,6 @@
 # cfpmie
+# Deploy Status badge
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ee9ee398-eafd-4f52-bfdf-f96490ab59d6/deploy-status)](https://app.netlify.com/projects/cfpmie/deploys)
 
 # NETLIFY:
 - NETLIFY_AUTH_TOKEN — your Netlify personal access token

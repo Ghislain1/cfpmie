@@ -99,7 +99,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaFieldProps>(
         className={cn(
           inputBase,
           error ? 'border-accent-500' : 'border-border',
-          'resize-y min-h-[100px]',
+          'resize-y min-h-25',
           className,
         )}
         aria-invalid={!!error}

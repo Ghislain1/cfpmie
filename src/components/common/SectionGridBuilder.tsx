@@ -51,11 +51,11 @@ export function SectionGridBuilder({
             <div
               key={i}
               className={cn(
-                'grid-card group overflow-hidden rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800',
+                'grid-card group overflow-hidden rounded-xl bg-linear-to-br from-primary-600 to-primary-700 shadow-lg dark:from-gray-700 dark:to-gray-800',
                 cardClassName,
               )}
             >
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative aspect-4/3 overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.alt ?? item.title}

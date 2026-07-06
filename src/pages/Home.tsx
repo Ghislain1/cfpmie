@@ -40,7 +40,7 @@ function HeroSection() {
         <source src="/home.mp4" type="video/mp4" />
       </video>
       <RainEffect density={200} color="rgba(255,255,255,0.8)" speed={0.5} className="absolute inset-0 h-full w-full" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
       <div className="relative mx-auto flex min-h-[inherit] max-w-7xl items-center px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="max-w-3xl">
           <Badge variant="orange">{t('home.hero.badge')}</Badge>

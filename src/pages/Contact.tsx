@@ -177,7 +177,7 @@ export default function Contact() {
                       {...register('message')}
                       id="message"
                       rows={4}
-                      className="mt-1 block w-full rounded-lg border border-border px-4 py-3 text-sm text-foreground placeholder-muted-foreground transition focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 resize-y min-h-[100px] dark:bg-gray-800"
+                      className="mt-1 block w-full rounded-lg border border-border px-4 py-3 text-sm text-foreground placeholder-muted-foreground transition focus:border-ring focus:outline-none focus:ring-2 focus:ring-ring/20 resize-y min-h-25 dark:bg-gray-800"
                       placeholder={t('contact.form.messagePlaceholder')}
                     />
                   </div>
