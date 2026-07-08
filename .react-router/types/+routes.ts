@@ -23,7 +23,7 @@ type Pages = {
   "/formations/electricite": {
     params: {};
   };
-  "/a-propos": {
+  "/about": {
     params: {};
   };
   "/contact": {
@@ -39,7 +39,7 @@ type Pages = {
 type RouteFiles = {
   "root.tsx": {
     id: "root";
-    page: "/" | "/formations/construction-metallique" | "/formations/gestion-finances-management" | "/formations/electricite" | "/a-propos" | "/contact" | "/*";
+    page: "/" | "/formations/construction-metallique" | "/formations/gestion-finances-management" | "/formations/electricite" | "/about" | "/contact" | "/*";
   };
   "pages/Home.tsx": {
     id: "pages/Home";
@@ -59,7 +59,7 @@ type RouteFiles = {
   };
   "pages/About.tsx": {
     id: "pages/About";
-    page: "/a-propos";
+    page: "/about";
   };
   "pages/Contact.tsx": {
     id: "pages/Contact";

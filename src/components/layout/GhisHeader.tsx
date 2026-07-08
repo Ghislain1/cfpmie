@@ -171,7 +171,7 @@ export default function GhisHeader() {
     { to: '/formations/construction-metallique', label: t('header.nav.constructionMetallique') },
     { to: '/formations/gestion-finances-management', label: t('header.nav.gestionManagement') },
     { to: '/formations/electricite', label: t('header.nav.electricite') },
-    { to: '/a-propos', label: t('header.nav.about') },
+    { to: '/about', label: t('header.nav.about') },
     { to: '/contact', label: t('header.nav.contact') },
   ]
 

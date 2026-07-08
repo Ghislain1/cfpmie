@@ -5,7 +5,7 @@ export default [
   { path: '/formations/construction-metallique', file: 'pages/ConstructionMetallique.tsx' },
   { path: '/formations/gestion-finances-management', file: 'pages/GestionFinances.tsx' },
   { path: '/formations/electricite', file: 'pages/Electricite.tsx' },
-  { path: '/a-propos', file: 'pages/About.tsx' },
+  { path: '/about', file: 'pages/About.tsx' },
   { path: '/contact', file: 'pages/Contact.tsx' },
   { path: '*', file: 'pages/NotFound.tsx' },
 ] satisfies RouteConfig
